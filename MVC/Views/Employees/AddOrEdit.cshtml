@@ -1,0 +1,60 @@
+﻿@model MVC.Models.mvcEmployeeModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.EmpID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName)
+            @* @Html.DropDownListFor(model => model.DeptName, new SelectList(ViewBag.list))*@
+
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName)
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NIC)
+            @Html.EditorFor(model => model.NIC)
+            @Html.ValidationMessageFor(model => model.NIC)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MobileNum)
+            @Html.EditorFor(model => model.MobileNum)
+            @Html.ValidationMessageFor(model => model.MobileNum)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address)
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeTypeID)
+            @Html.EditorFor(model => model.EmployeeTypeID)
+            @Html.ValidationMessageFor(model => model.EmployeeTypeID)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeptID)
+            @Html.EditorFor(model => model.DeptID)
+            @Html.ValidationMessageFor(model => model.DeptID)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button">
+            <input type="reset" value="Reset" class="btn button">
+        </div>
+    }
+

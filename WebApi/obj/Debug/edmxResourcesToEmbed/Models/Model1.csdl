@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDatabase.bacpacModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NIC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileNum" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmployeeTypeID" Type="Int32" Nullable="false" />
+    <Property Name="DeptID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Department" FromRole="Employees" ToRole="Department" />
+    <NavigationProperty Name="EmployeeType" Relationship="Self.FK_Employees_EmployeeType" FromRole="Employees" ToRole="EmployeeType" />
+    <NavigationProperty Name="LeaveApplies" Relationship="Self.FK_LeaveApply_Employees" FromRole="Employees" ToRole="LeaveApply" />
+  </EntityType>
+  <EntityType Name="LeaveApply">
+    <Key>
+      <PropertyRef Name="LeaveID" />
+    </Key>
+    <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="LeaveFrom" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LeaveTo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LeaveTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_LeaveApply_Employees" FromRole="LeaveApply" ToRole="Employees" />
+    <NavigationProperty Name="LeaveType" Relationship="Self.FK_LeaveApply_LeaveTypes" FromRole="LeaveApply" ToRole="LeaveTypes" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DeptID" />
+    </Key>
+    <Property Name="DeptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DeptDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Department" FromRole="Department" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="EmployeeType">
+    <Key>
+      <PropertyRef Name="EmployeeTypeID" />
+    </Key>
+    <Property Name="EmployeeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_EmployeeType" FromRole="EmployeeType" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="LeaveType">
+    <Key>
+      <PropertyRef Name="LeaveTypeID" />
+    </Key>
+    <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LeaveType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LeaveApplies" Relationship="Self.FK_LeaveApply_LeaveTypes" FromRole="LeaveTypes" ToRole="LeaveApply" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Employees_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DeptID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="DeptID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employees_EmployeeType">
+    <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeType">
+        <PropertyRef Name="EmployeeTypeID" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="EmployeeTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveApply_Employees">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+    <End Role="LeaveApply" Type="Self.LeaveApply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="LeaveApply">
+        <PropertyRef Name="EmpID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LeaveApply_LeaveTypes">
+    <End Role="LeaveTypes" Type="Self.LeaveType" Multiplicity="1" />
+    <End Role="LeaveApply" Type="Self.LeaveApply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeaveTypes">
+        <PropertyRef Name="LeaveTypeID" />
+      </Principal>
+      <Dependent Role="LeaveApply">
+        <PropertyRef Name="LeaveTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="LeaveApplies" EntityType="Self.LeaveApply" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="EmployeeTypes" EntityType="Self.EmployeeType" />
+    <EntitySet Name="LeaveTypes" EntityType="Self.LeaveType" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <AssociationSet Name="FK_Employees_Department" Association="Self.FK_Employees_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employees_EmployeeType" Association="Self.FK_Employees_EmployeeType">
+      <End Role="EmployeeType" EntitySet="EmployeeTypes" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveApply_Employees" Association="Self.FK_LeaveApply_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="LeaveApply" EntitySet="LeaveApplies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LeaveApply_LeaveTypes" Association="Self.FK_LeaveApply_LeaveTypes">
+      <End Role="LeaveTypes" EntitySet="LeaveTypes" />
+      <End Role="LeaveApply" EntitySet="LeaveApplies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
