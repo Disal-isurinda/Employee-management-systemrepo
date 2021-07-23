@@ -1,9 +1,7 @@
 ﻿using MVC.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -14,8 +12,16 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             IEnumerable<mvcEmployeeModel> empList;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
-            empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
+            if (TempData["empList"] != null)
+            {
+                empList = TempData["empList"] as IEnumerable<mvcEmployeeModel>;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
+                empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
+            }
+
             return View(empList);
         }
 
@@ -29,13 +35,11 @@ namespace MVC.Controllers
                 //var list = new List<string>() { "Account", "HR", "Managing", "Develpment" };
                 //ViewBag.list = list;
                 return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
-
                 // return View();
             }
-
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult AddOrEdit(mvcEmployeeModel emp)
         {
             if (emp.EmpID == 0)
@@ -45,11 +49,8 @@ namespace MVC.Controllers
             else
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Employees/" + emp.EmpID, emp).Result;
-
             }
             return RedirectToAction("Index");
-
-
         }
 
         public ActionResult Delete(int id)
@@ -57,7 +58,6 @@ namespace MVC.Controllers
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Employees/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Deleted successFully";
             return RedirectToAction("Index");
-
         }
     }
 }

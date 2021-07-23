@@ -9,39 +9,47 @@
 <p>
     <a href="@Url.Action("AddOrEdit","Departments")">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DeptID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeptName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeptDescription)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeptID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeptName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeptDescription)
-        </td>
-        <td>
-            <a href="@Url.Action("AddOrEdit","Departments",new { id = item.DeptID})">Edit</a>
-            <a onclick="Delete(@item.DeptID)"> Delete</a>
-        </td>
-    </tr>
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="table">
+        <tr class="bg-success">
+            <th>
+                @Html.DisplayNameFor(model => model.DeptID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptDescription)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeptDescription)
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit", "Departments", new { id = item.DeptID })">Edit</a>
+                    <a onclick="Delete(@item.DeptID)"> Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
 }
-
-</table>
+else
+{
+    <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
+}
 
 @section scripts{
     <script>
@@ -51,6 +59,5 @@
             }, null);
 
         }
-
-        </script>
-    }
+    </script>
+}
