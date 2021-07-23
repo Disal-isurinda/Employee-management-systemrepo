@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MVC.Models.mvcEmployeeModel>
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<MVC.Models.mvcEmployeeModel>
 
 @{
     ViewBag.Title = "Index";
@@ -15,30 +16,40 @@
     <table class="table">
         <tr class="bg-success">
             <th>
-                @Html.DisplayNameFor(model => model.EmpID)
+                @Html.Label("Employee ID")
+                @*@Html.DisplayNameFor(model => model.EmpID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                @Html.Label("First Name")
+                @*@Html.DisplayNameFor(model => model.FirstName)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.Label("Last Name")
+                @*@Html.DisplayNameFor(model => model.LastName)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NIC)
+                @Html.Label("NIC")
+                @*@Html.DisplayNameFor(model => model.NIC)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MobileNum)
+                @Html.Label("Mobile No")
+                @*@Html.DisplayNameFor(model => model.MobileNum)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.Label("Address")
+                @*@Html.DisplayNameFor(model => model.Address)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeTypeID)
+                @Html.Label("Employee Type ID")
+                @*@Html.DisplayNameFor(model => model.EmployeeTypeID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeptID)
+                @Html.Label("Department ID")
+                @*@Html.DisplayNameFor(model => model.DeptID)*@
             </th>
-            <th></th>
+            <th>
+                @Html.Label("Options")
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -82,6 +93,13 @@ else
     <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
 
 }
+
+<hr />
+
+<div class="text-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
 
 @section scripts{
     <script>

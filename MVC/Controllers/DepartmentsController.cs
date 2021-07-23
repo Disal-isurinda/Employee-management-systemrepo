@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Mvc;
+using PagedList;
 
 namespace MVC.Controllers
 {
     public class DepartmentsController : Controller
     {
         // GET: Departments
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 10;
+            int pageIndex = 1;
+            pageIndex = page.HasValue ? System.Convert.ToInt32(page) : 1;
+            IPagedList<mvcDepartmentModel> pageddepList;
             IEnumerable<mvcDepartmentModel> depList;
             if (TempData["depList"] != null)
             {
@@ -20,8 +25,8 @@ namespace MVC.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Departments").Result;
                 depList = response.Content.ReadAsAsync<IEnumerable<mvcDepartmentModel>>().Result;
             }
-
-            return View(depList);
+            pageddepList = depList.ToPagedList(pageIndex, pageSize);
+            return View(pageddepList);
         }
 
         public ActionResult AddOrEdit(int id = 0)

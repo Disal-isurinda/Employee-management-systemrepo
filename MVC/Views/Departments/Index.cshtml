@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MVC.Models.mvcDepartmentModel>
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<MVC.Models.mvcDepartmentModel>
 
 @{
     ViewBag.Title = "Index";
@@ -15,15 +16,20 @@
     <table class="table">
         <tr class="bg-success">
             <th>
-                @Html.DisplayNameFor(model => model.DeptID)
+                @Html.Label("Department ID")
+                @*@Html.DisplayNameFor(model => model.DeptID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeptName)
+                @Html.Label("Department Name")
+                @*@Html.DisplayNameFor(model => model.DeptName)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeptDescription)
+                @Html.Label("Department Description")
+                @*@Html.DisplayNameFor(model => model.DeptDescription)*@
             </th>
-            <th></th>
+            <th>
+                @Html.Label("Options")
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -50,6 +56,13 @@ else
 {
     <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
 }
+
+<hr />
+
+<div class="text-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
 
 @section scripts{
     <script>

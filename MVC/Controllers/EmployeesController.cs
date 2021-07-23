@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Mvc;
+using PagedList;
 
 namespace MVC.Controllers
 {
     public class EmployeesController : Controller
     {
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 10;
+            int pageIndex = 1;
+            pageIndex = page.HasValue ? System.Convert.ToInt32(page) : 1;
+            IPagedList<mvcEmployeeModel> pagedempList;
             IEnumerable<mvcEmployeeModel> empList;
             if (TempData["empList"] != null)
             {
@@ -21,8 +26,8 @@ namespace MVC.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
                 empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
             }
-
-            return View(empList);
+            pagedempList = empList.ToPagedList(pageIndex, pageSize);
+            return View(pagedempList);
         }
 
         public ActionResult AddOrEdit(int id = 0)

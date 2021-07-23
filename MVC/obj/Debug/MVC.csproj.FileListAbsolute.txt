@@ -348,3 +348,7 @@ D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.csproj.Core
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.csproj.CopyComplete
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.pdb
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.dll
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.dll
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.xml
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.xml
