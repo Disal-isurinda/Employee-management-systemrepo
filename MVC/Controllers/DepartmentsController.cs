@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Mvc;
 using PagedList;
+using System;
+using System.Linq;
 
 namespace MVC.Controllers
 {
     public class DepartmentsController : Controller
     {
         // GET: Departments
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortBy, string sortOrder, string psortBy)
         {
             int pageSize = 10;
             int pageIndex = 1;
@@ -25,6 +27,45 @@ namespace MVC.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Departments").Result;
                 depList = response.Content.ReadAsAsync<IEnumerable<mvcDepartmentModel>>().Result;
             }
+
+            sortOrder = (string.IsNullOrWhiteSpace(sortOrder) || sortOrder.Equals("asc")) ? "desc" : "asc";
+
+            if (!string.IsNullOrWhiteSpace(sortBy) && !sortBy.Equals(psortBy, StringComparison.CurrentCultureIgnoreCase))
+            {
+                sortOrder = "asc";
+            }
+            ViewBag.sortOrder = sortOrder;
+            ViewBag.sortBy = sortBy;
+            sortBy = String.IsNullOrEmpty(sortBy) ? "Department ID" : sortBy;
+            switch (sortBy)
+            {
+                case "Employee ID":
+                    if (sortOrder.Equals("desc"))
+                    {
+                        depList = depList.OrderByDescending(e => e.DeptID);
+                    }
+                    else
+                    {
+                        depList = depList.OrderBy(e => e.DeptID);
+                    }
+                    break;
+
+                case "Department Name":
+                    if (sortOrder.Equals("desc"))
+                    {
+                        depList = depList.OrderByDescending(e => e.DeptName);
+                    }
+                    else
+                    {
+                        depList = depList.OrderBy(e => e.DeptName);
+                    }
+                    break;
+
+                case "Default":
+                    depList = depList.OrderBy(e => e.DeptID);
+                    break;
+            }
+
             pageddepList = depList.ToPagedList(pageIndex, pageSize);
             return View(pageddepList);
         }

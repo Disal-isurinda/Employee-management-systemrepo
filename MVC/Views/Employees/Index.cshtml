@@ -13,84 +13,96 @@
 
 @if (Model != null && Model.Count() > 0)
 {
-    <table class="table">
-        <tr class="bg-success">
-            <th>
-                @Html.Label("Employee ID")
-                @*@Html.DisplayNameFor(model => model.EmpID)*@
-            </th>
-            <th>
-                @Html.Label("First Name")
-                @*@Html.DisplayNameFor(model => model.FirstName)*@
-            </th>
-            <th>
-                @Html.Label("Last Name")
-                @*@Html.DisplayNameFor(model => model.LastName)*@
-            </th>
-            <th>
-                @Html.Label("NIC")
-                @*@Html.DisplayNameFor(model => model.NIC)*@
-            </th>
-            <th>
-                @Html.Label("Mobile No")
-                @*@Html.DisplayNameFor(model => model.MobileNum)*@
-            </th>
-            <th>
-                @Html.Label("Address")
-                @*@Html.DisplayNameFor(model => model.Address)*@
-            </th>
-            <th>
-                @Html.Label("Employee Type ID")
-                @*@Html.DisplayNameFor(model => model.EmployeeTypeID)*@
-            </th>
-            <th>
-                @Html.Label("Department ID")
-                @*@Html.DisplayNameFor(model => model.DeptID)*@
-            </th>
-            <th>
-                @Html.Label("Options")
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmpID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NIC)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MobileNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeTypeID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeptID)
-                </td>
-                <td>
-                    <a href="@Url.Action("AddOrEdit","Employees",new { id = item.EmpID})">Edit</a>
-                    <a onclick="Delete(@item.EmpID)"> Delete</a>
-                </td>
+    using (Html.BeginForm())
+    {
+        <table class="table">
+            <tr class="bg-success">
+                <th>
+                    @*@Html.Label("Employee ID")*@
+                    @Html.ActionLink("Employee ID", "Index",
+              new { sortBy = "Employee ID", sortOrder = ViewBag.sortOrder, psortBy = ViewBag.sortBy })
+                    @*@Html.DisplayNameFor(model => model.EmpID)*@
+                </th>
+                <th>
+                    @*@Html.Label("First Name")*@
+                    @Html.ActionLink("First Name", "Index",
+              new { sortBy = "First Name", sortOrder = ViewBag.sortOrder, psortBy = ViewBag.sortBy })
+                    @*@Html.DisplayNameFor(model => model.FirstName)*@
+                </th>
+                <th>
+                    @Html.Label("Last Name")
+                    @*@Html.DisplayNameFor(model => model.LastName)*@
+                </th>
+                <th>
+                    @Html.Label("NIC")
+                    @*@Html.DisplayNameFor(model => model.NIC)*@
+                </th>
+                <th>
+                    @Html.Label("Mobile No")
+                    @*@Html.DisplayNameFor(model => model.MobileNum)*@
+                </th>
+                <th>
+                    @Html.Label("Address")
+                    @*@Html.DisplayNameFor(model => model.Address)*@
+                </th>
+                <th>
+                    @Html.Label("Employee Type ID")
+                    @*@Html.DisplayNameFor(model => model.EmployeeTypeID)*@
+                </th>
+                <th>
+                    @Html.Label("Department ID")
+                    @*@Html.DisplayNameFor(model => model.DeptID)*@
+                </th>
+                <th>
+                    @Html.Label("Options")
+                </th>
             </tr>
-        }
-    </table>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MobileNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeTypeID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeptID)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AddOrEdit", "Employees", new { id = item.EmpID })">Edit</a>
+                        <a onclick="Delete(@item.EmpID)"> Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <script>
+            document.write('<a href="' + document.referrer + '">Go Back</a>');
+        </script>
+
+    }
 }
 else
 {
 
     <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
+    @Html.ActionLink("Back to Full List", "Index", "Employees")
 
 }
 
@@ -98,7 +110,7 @@ else
 
 <div class="text-center">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-    of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = ViewBag.sortBy, sortOrder = ViewBag.sortOrder, psortBy = ViewBag.psortBy }), PagedListRenderOptions.ClassicPlusFirstAndLast)
 </div>
 
 @section scripts{
