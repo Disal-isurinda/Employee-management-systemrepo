@@ -3,7 +3,7 @@
     {
         <div class="form-inline my-2 my-lg-0">
             <div class="input-group">
-                <input id="sQuery" name="sQuery" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <input id="sQuery" name="sQuery" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" value="@(TempData["sQuery"] != null ? TempData["sQuery"].ToString() : "")">
                 <span class="input-group-addon group-icon">
                     <span id="searchIcon" class="glyphicon glyphicon-search"></span>
                 </span>

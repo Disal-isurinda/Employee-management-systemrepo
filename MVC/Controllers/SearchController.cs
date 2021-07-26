@@ -9,11 +9,13 @@ namespace MVC.Controllers
 {
     public class SearchController : Controller
     {
+        [HttpPost]
         public ActionResult Index(String sQuery)
         {
             string page = Request.UrlReferrer.AbsolutePath.ToString().Replace("/", "");
             if (!string.IsNullOrEmpty(sQuery))
             {
+                TempData["sQuery"] = sQuery;
                 sQuery = sQuery.ToLower();
                 var isQuery = -1;
                 Int32.TryParse(sQuery, out isQuery);
