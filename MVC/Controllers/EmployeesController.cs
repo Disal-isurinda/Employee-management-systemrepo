@@ -1,9 +1,9 @@
 ﻿using MVC.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVC.Controllers
@@ -11,12 +11,48 @@ namespace MVC.Controllers
     public class EmployeesController : Controller
     {
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int? page, string sortBy)
         {
+            int pageSize = 10;
+            int pageIndex = 1;
+            pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            IPagedList<mvcEmployeeModel> pagedempList;
             IEnumerable<mvcEmployeeModel> empList;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
-            empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
-            return View(empList);
+            if (TempData["empList"] != null)
+            {
+                empList = TempData["empList"] as IEnumerable<mvcEmployeeModel>;
+            }
+            else
+            {
+                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
+                empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
+            }
+            ViewBag.IDSortParm = String.IsNullOrEmpty(sortBy) ? "id_desc" : "";
+            ViewBag.FNameSortParm = sortBy == "First Name" ? "fname_desc" : "First Name";
+
+            switch (sortBy)
+            {
+                case "id_desc":
+                    empList = empList.OrderByDescending(e => e.EmpID);
+                    break;
+
+                case "First Name":
+
+                    empList = empList.OrderBy(e => e.FirstName);
+
+                    break;
+
+                case "fname_desc":
+
+                    empList = empList.OrderByDescending(e => e.FirstName);
+                    break;
+
+                case "Default":
+                    empList = empList.OrderBy(e => e.EmpID);
+                    break;
+            }
+            pagedempList = empList.ToPagedList(pageIndex, pageSize);
+            return View(pagedempList);
         }
 
         public ActionResult AddOrEdit(int id = 0)
@@ -29,13 +65,11 @@ namespace MVC.Controllers
                 //var list = new List<string>() { "Account", "HR", "Managing", "Develpment" };
                 //ViewBag.list = list;
                 return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
-
                 // return View();
             }
-
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult AddOrEdit(mvcEmployeeModel emp)
         {
             if (emp.EmpID == 0)
@@ -45,11 +79,8 @@ namespace MVC.Controllers
             else
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Employees/" + emp.EmpID, emp).Result;
-
             }
             return RedirectToAction("Index");
-
-
         }
 
         public ActionResult Delete(int id)
@@ -57,7 +88,6 @@ namespace MVC.Controllers
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Employees/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Deleted successFully";
             return RedirectToAction("Index");
-
         }
     }
 }
