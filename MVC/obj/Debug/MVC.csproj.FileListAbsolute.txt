@@ -323,6 +323,8 @@ D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\Json.Net.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\Microsoft.Web.Infrastructure.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\Newtonsoft.Json.dll
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.dll
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Net.Http.Formatting.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.Helpers.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.Mvc.dll
@@ -332,6 +334,8 @@ D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.WebPages.D
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.WebPages.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.WebPages.Razor.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\WebGrease.dll
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.xml
+D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.xml
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Net.Http.Formatting.xml
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.Helpers.xml
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\System.Web.Mvc.xml
@@ -348,7 +352,3 @@ D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.csproj.Core
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.csproj.CopyComplete
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.dll
 D:\VS Projects\Test\Employee-management-systemrepo\MVC\obj\Debug\MVC.pdb
-D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.dll
-D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.dll
-D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.xml
-D:\VS Projects\Test\Employee-management-systemrepo\MVC\bin\PagedList.Mvc.xml
