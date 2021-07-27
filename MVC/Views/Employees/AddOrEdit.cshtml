@@ -41,7 +41,10 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmployeeTypeID)
-            @Html.EditorFor(model => model.EmployeeTypeID)
+            @Html.DropDownList("EmployeeTypeID",
+                  (IEnumerable<SelectListItem>)ViewBag.list2,
+                  "Select")
+            @* @Html.EditorFor(model => model.EmployeeTypeID)*@
             @Html.ValidationMessageFor(model => model.EmployeeTypeID)
         </div>
 

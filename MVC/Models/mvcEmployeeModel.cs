@@ -19,7 +19,7 @@ namespace MVC.Models
         public string NIC { get; set; }
         public int MobileNum { get; set; }
         public string Address { get; set; }
-        public int EmployeeTypeID { get; set; }
+        public string EmployeeTypeID { get; set; }
         public string DeptID { get; set; }
 
         /*public virtual mvcDepartmentModel Department { get; set; }

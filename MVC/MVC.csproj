@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EmployeeTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +145,7 @@
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\mvcDepartmentModel.cs" />
     <Compile Include="Models\mvcEmployeeModel.cs" />
+    <Compile Include="Models\mvcEmployeeTypeModel.cs" />
     <Compile Include="Models\mvcLeaveApply.cs" />
     <Compile Include="Models\mvcLeaveType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,6 +210,8 @@
     <Content Include="Views\Departments\AddOrEdit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\AddOrEdit.cshtml" />
+    <Content Include="Views\EmployeeTypes\Index.cshtml" />
+    <Content Include="Views\EmployeeTypes\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

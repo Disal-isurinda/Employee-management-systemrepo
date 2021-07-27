@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MVC.Models.mvcEmployeeTypeModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit","EmployeeTypes")">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+            </td>
+            <td>
+
+                <a href="@Url.Action("AddOrEdit","EmployeeTypes",new { id = item.EmployeeTypeID})">Edit</a>
+                <a onclick="Delete(@item.EmployeeTypeID)"> Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        function Delete (id){
+            alertify.confirm('Employee management system', 'Are you sure to delete This record', function () {
+                window.location.href = '@Url.Action("Delete", "EmployeeTypes")/' + id;
+            }, null);
+
+        }
+
+    </script>
+}

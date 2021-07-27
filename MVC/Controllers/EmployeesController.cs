@@ -35,6 +35,14 @@ namespace MVC.Controllers
             // var dataObjects = JsonConvert.DeserializeObject<AddressList>(json)
             ViewBag.list = responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });
 
+            //------------------------------------
+
+            var response3 = await GlobalVariables.WebApiClient.GetAsync("EmployeeTypes").Result.Content.ReadAsAsync<IList<mvcEmployeeTypeModel>>();
+
+            response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
+
+            ViewBag.list2 = response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
+
 
             if (id == 0)
             {
