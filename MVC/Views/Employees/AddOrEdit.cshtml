@@ -10,7 +10,6 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName)
-            @* @Html.DropDownListFor(model => model.DeptName, new SelectList(ViewBag.list))*@
 
             @Html.EditorFor(model => model.FirstName)
             @Html.ValidationMessageFor(model => model.FirstName)
@@ -48,13 +47,20 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DeptID)
-            @Html.EditorFor(model => model.DeptID)
+            @Html.DropDownList("DeptID",
+                   (IEnumerable<SelectListItem>)ViewBag.list,
+                   "Select")
+          @*  @Html.DropDownListFor(model => model.DeptID, ViewBag.list as SelectList)*@
+            @* @Html.DropDownList("responseto", (IEnumerable<SelectListItem>)ViewBag.list, new { id = "ddlLocations", @class = "form-control" })*@
+            @*  @Html.EditorFor(model => model.DeptID)*@
+            @*  @Html.DropDownList("DeptID", null, htmlAttributes: new { @class = "form-control" })*@
+
             @Html.ValidationMessageFor(model => model.DeptID)
         </div>
 
-        <div class="form-group">
-            <input type="submit" value="Submit" class="btn button">
-            <input type="reset" value="Reset" class="btn button">
-        </div>
-    }
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn button">
+                <input type="reset" value="Reset" class="btn button">
+            </div>
+        }
 

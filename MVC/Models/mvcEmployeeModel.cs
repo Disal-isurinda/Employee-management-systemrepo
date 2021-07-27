@@ -7,11 +7,11 @@ namespace MVC.Models
 {
     public class mvcEmployeeModel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+      /*  [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public mvcEmployeeModel()
         {
             this.LeaveApplies = new HashSet<mvcLeaveApply>();
-        }
+        }*/
 
         public int EmpID { get; set; }
         public string FirstName { get; set; }
@@ -20,11 +20,11 @@ namespace MVC.Models
         public int MobileNum { get; set; }
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
-        public int DeptID { get; set; }
+        public string DeptID { get; set; }
 
-        public virtual mvcDepartmentModel Department { get; set; }
+        /*public virtual mvcDepartmentModel Department { get; set; }
         public virtual mvcEmployeeModel EmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<mvcLeaveApply> LeaveApplies { get; set; }
+        public virtual ICollection<mvcLeaveApply> LeaveApplies { get; set; }*/
     }
 }

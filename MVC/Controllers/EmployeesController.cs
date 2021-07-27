@@ -1,4 +1,5 @@
-﻿using MVC.Models;
+﻿using EmployeeManagementSystem.Models;
+using MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace MVC.Controllers
 {
     public class EmployeesController : Controller
     {
+        private mvcDepartmentModel db = new mvcDepartmentModel();
+
+
         // GET: Employees
         public ActionResult Index()
         {
@@ -19,18 +23,50 @@ namespace MVC.Controllers
             return View(empList);
         }
 
-        public ActionResult AddOrEdit(int id = 0)
+        public async System.Threading.Tasks.Task<ActionResult> AddOrEdit(int id = 0)
         {
+
+            //// ViewBag.deptId = new SelectList(db.Departments, "DeptID", "DeptName");
+            //// return View();
+            var responseto = await GlobalVariables.WebApiClient.GetAsync("Departments").Result.Content.ReadAsAsync<IList<mvcDepartmentModel>>();
+
+            responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });
+
+            // var dataObjects = JsonConvert.DeserializeObject<AddressList>(json)
+            ViewBag.list = responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });
+
+
             if (id == 0)
+            {
+                // HttpResponseMessage responseto = GlobalVariables.WebApiClient.GetAsync("Departments").Result;
+               
+                
+
                 return View(new mvcEmployeeModel());
+            }
             else
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees/" + id.ToString()).Result;
+                var response = await GlobalVariables.WebApiClient.GetAsync("Employees/" + id.ToString()).Result.Content.ReadAsAsync<mvcEmployeeModel>();
+                // ViewBag.deptId = new SelectList(db.Departments, "DeptID", "DeptName");
+
                 //var list = new List<string>() { "Account", "HR", "Managing", "Develpment" };
-                //ViewBag.list = list;
-                return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
+                // ViewBag.list = list;
+                return View(response);
 
                 // return View();
+                /*  List<SelectListItem> ObjList = new List<SelectListItem>()
+                  {
+                        new SelectListItem { Text = "Accounting", Value = "1" },
+                        new SelectListItem { Text = "Managing", Value = "2" },
+                        new SelectListItem { Text = "HR", Value = "3" },
+                        new SelectListItem { Text = "Developing", Value = "4" },
+
+                  };
+                  //Assigning generic list to ViewBag
+                  ViewBag.Locations = ObjList;
+               //// return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
+
+                  return View();*/
             }
 
         }

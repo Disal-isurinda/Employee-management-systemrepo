@@ -16,10 +16,18 @@ namespace WebApi.Controllers
     {
         private DBModel db = new DBModel();
 
-        // GET: api/Departments
-        public IQueryable<Department> GetDepartments()
+       /* public List<IQueryable<Department>> GetAllDepartments()
         {
-            return db.Departments;
+
+        }*/
+
+        // GET: api/Departments
+        [HttpGet]
+        public List<Department> GetDepartments()
+        {
+            List<Department> DepartmentList = new List<Department>();
+            DepartmentList = (from Department in db.Departments select Department).ToList();
+            return DepartmentList;
         }
 
         // GET: api/Departments/5
