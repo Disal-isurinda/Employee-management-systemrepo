@@ -22,6 +22,7 @@ namespace MVC.Models
         public string EmployeeTypeID { get; set; }
         public string DeptID { get; set; }
 
+
         /*public virtual mvcDepartmentModel Department { get; set; }
         public virtual mvcEmployeeModel EmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
