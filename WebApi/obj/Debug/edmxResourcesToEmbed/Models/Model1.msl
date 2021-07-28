@@ -72,5 +72,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DepartmentSearchSP" FunctionName="EmployeeDatabase.bacpacModel.Store.DepartmentSearchSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeeDatabase.bacpacModel.DepartmentSearchSP_Result">
+          <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+          <ScalarProperty Name="DeptDescription" ColumnName="DeptDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EmployeeSearchSP" FunctionName="EmployeeDatabase.bacpacModel.Store.EmployeeSearchSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeeDatabase.bacpacModel.EmployeeSearchSP_Result">
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="NIC" ColumnName="NIC" />
+          <ScalarProperty Name="MobileNum" ColumnName="MobileNum" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
+          <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EmpSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.EmployeeSearchSP" />
+    <FunctionImportMapping FunctionImportName="DeptSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.DepartmentSearchSP" />
   </EntityContainerMapping>
 </Mapping>

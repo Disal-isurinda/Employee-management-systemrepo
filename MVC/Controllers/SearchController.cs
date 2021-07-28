@@ -12,30 +12,26 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Index(String sQuery)
         {
-            string page = Request.UrlReferrer.AbsolutePath.ToString().Replace("/", "");
+            TempData["sQuery"] = null;
+            Uri uriaddress = new Uri(Request.UrlReferrer.ToString());
+            string page = uriaddress.Segments[1].Replace("/", "");
             if (!string.IsNullOrEmpty(sQuery))
             {
                 TempData["sQuery"] = sQuery;
-                sQuery = sQuery.ToLower();
-                var isQuery = -1;
-                Int32.TryParse(sQuery, out isQuery);
+
                 if (page == "Employees")
                 {
                     IEnumerable<mvcEmployeeModel> empList;
-                    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
+                    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Search/GetEmployee/" + sQuery).Result;
                     empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
-
-                    empList = empList.Where(e => e.EmpID.Equals(isQuery) || e.FirstName.ToLower().Contains(sQuery));
                     TempData["empList"] = empList;
                     return RedirectToAction("Index", "Employees");
                 }
                 else if (page == "Departments")
                 {
                     IEnumerable<mvcDepartmentModel> depList;
-                    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Departments").Result;
+                    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Search/GetDepartment/" + sQuery).Result;
                     depList = response.Content.ReadAsAsync<IEnumerable<mvcDepartmentModel>>().Result;
-
-                    depList = depList.Where(d => d.DeptID.Equals(isQuery) || d.DeptName.ToLower().Contains(sQuery));
                     TempData["depList"] = depList;
                     return RedirectToAction("Index", "Departments");
                 }
