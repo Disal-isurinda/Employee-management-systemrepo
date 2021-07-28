@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Regisstered Employee</h2>
 
 <p>
     <a href="@Url.Action("AddOrEdit","Employees")">Create New</a>
@@ -31,10 +31,10 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeTypeID)
+            @Html.DisplayNameFor(model => model.EmployeeType.EmployeeTypeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeptID)
+            @Html.DisplayNameFor(model => model.Department.DeptName)
         </th>
         <th></th>
     </tr>
@@ -61,10 +61,10 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmployeeTypeID)
+                @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeptID)
+                @Html.DisplayFor(modelItem => item.Department.DeptName)
             </td>
             <td>
                 <a href="@Url.Action("AddOrEdit","Employees",new { id = item.EmpID})">Edit</a>

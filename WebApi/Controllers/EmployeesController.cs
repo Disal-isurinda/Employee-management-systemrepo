@@ -9,11 +9,35 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApi.Models;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WebApi.Controllers
 {
     public class EmployeesController : ApiController
     {
+
+        /*public void pl(object sender , EventArgs e)
+        {
+            string mainconn = ConfigurationManager.ConnectionStrings["DBModel"].ConnectionString;
+            SqlConnection sqlconn = new SqlConnection(mainconn);
+            string sqlquery = "select Department.DeptName from [Master].[Department] inner join [Employee].[Employees] on Department.DeptID = Employees.DeptID ";
+            SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
+            sqlcomm.Connection.Open();
+            sqlcomm.ExecuteNonQuery();
+
+
+            //sqlconn.Open();
+            
+            //return sqlcomm;
+            //SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+           // DataTable dt = new DataTable();
+   
+        }*/
+        
+
+
+
         private DBModel db = new DBModel();
 
         // GET: api/Employees

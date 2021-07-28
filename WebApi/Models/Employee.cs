@@ -28,8 +28,12 @@ namespace WebApi.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
+        public string DeptName { get; set; }
+        public string EmployeeTypeName { get; set; }
 
-    
+
+
+
         public virtual Department Department { get; set; }
         public virtual EmployeeType EmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
