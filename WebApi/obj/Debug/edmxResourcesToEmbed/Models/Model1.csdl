@@ -144,5 +144,36 @@
       <End Role="LeaveTypes" EntitySet="LeaveTypes" />
       <End Role="LeaveApply" EntitySet="LeaveApplies" />
     </AssociationSet>
+    <FunctionImport Name="DepartmentSearchSP" ReturnType="Collection(EmployeeDatabase.bacpacModel.DepartmentSearchSP_Result)">
+      <Parameter Name="DeptID" Mode="In" Type="Int32" />
+      <Parameter Name="DeptName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EmployeeSearchSP" ReturnType="Collection(EmployeeDatabase.bacpacModel.EmployeeSearchSP_Result)">
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EmpSearchF" EntitySet="Employees" ReturnType="Collection(EmployeeDatabase.bacpacModel.Employee)">
+      <Parameter Name="EmpID" Mode="In" Type="Int32" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeptSearchF" EntitySet="Departments" ReturnType="Collection(EmployeeDatabase.bacpacModel.Department)">
+      <Parameter Name="DeptID" Mode="In" Type="Int32" />
+      <Parameter Name="DeptName" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="DepartmentSearchSP_Result">
+    <Property Type="Int32" Name="DeptID" Nullable="false" />
+    <Property Type="String" Name="DeptName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DeptDescription" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="EmployeeSearchSP_Result">
+    <Property Type="Int32" Name="EmpID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="NIC" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="MobileNum" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="EmployeeTypeID" Nullable="false" />
+    <Property Type="Int32" Name="DeptID" Nullable="false" />
+  </ComplexType>
 </Schema>

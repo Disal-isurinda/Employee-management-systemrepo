@@ -112,6 +112,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="DepartmentSearchSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeptID" Type="int" Mode="In" />
+    <Parameter Name="DeptName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="EmployeeSearchSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpID" Type="int" Mode="In" />
+    <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="EmployeeDatabasebacpacModelStoreContainer">
     <EntitySet Name="Employees" EntityType="Self.Employees" Schema="Employee" store:Type="Tables" />
     <EntitySet Name="LeaveApply" EntityType="Self.LeaveApply" Schema="Employee" store:Type="Tables" />
