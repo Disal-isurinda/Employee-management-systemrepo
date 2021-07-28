@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MVC.Models.mvcLeaveApply>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    <a href="@Url.Action("AddOrEdit","LeaveApply")" class="btn btn-default"><i class="fa fa-plus"></i>Apply Leave </a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.EmpID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTypeID)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTypeID)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit","LeaveApply",new {id=item.LeaveID })"class="btn btn-default"><i class="fa fa-pencil"></i>Edit</a>
+                <a onclick="Delete(@item.LeaveID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+
+        });
+        function Delete(id) {
+            alertify.confirm('Leave Request', 'Are you sure to delete this request ?', function () {
+                window.location.href = '@Url.Action("Delete","LeaveApply")/' + id;
+            }, null);
+        }
+
+
+
+
+    </script>
+    }
