@@ -10,7 +10,7 @@ namespace WebApi.Controllers
 {
     public class SearchController : ApiController
     {
-        private DBModel db = new DBModel();
+        private readonly DBModel db = new DBModel();
 
         [Route("api/Search/GetEmployee/{sQuery}")]
         public IHttpActionResult GetEmployee(string sQuery)
