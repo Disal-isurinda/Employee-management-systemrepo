@@ -112,5 +112,44 @@ namespace WebApi.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Department>("DeptSearchF", mergeOption, deptIDParameter, deptNameParameter);
         }
+    
+        public virtual ObjectResult<EmpTypeSearchSP_Result> EmpTypeSearchSP(Nullable<int> typeID, string typeName)
+        {
+            var typeIDParameter = typeID.HasValue ?
+                new ObjectParameter("TypeID", typeID) :
+                new ObjectParameter("TypeID", typeof(int));
+    
+            var typeNameParameter = typeName != null ?
+                new ObjectParameter("TypeName", typeName) :
+                new ObjectParameter("TypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmpTypeSearchSP_Result>("EmpTypeSearchSP", typeIDParameter, typeNameParameter);
+        }
+    
+        public virtual ObjectResult<EmployeeType> EmpTypeSearchF(Nullable<int> typeID, string typeName)
+        {
+            var typeIDParameter = typeID.HasValue ?
+                new ObjectParameter("TypeID", typeID) :
+                new ObjectParameter("TypeID", typeof(int));
+    
+            var typeNameParameter = typeName != null ?
+                new ObjectParameter("TypeName", typeName) :
+                new ObjectParameter("TypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeType>("EmpTypeSearchF", typeIDParameter, typeNameParameter);
+        }
+    
+        public virtual ObjectResult<EmployeeType> EmpTypeSearchF(Nullable<int> typeID, string typeName, MergeOption mergeOption)
+        {
+            var typeIDParameter = typeID.HasValue ?
+                new ObjectParameter("TypeID", typeID) :
+                new ObjectParameter("TypeID", typeof(int));
+    
+            var typeNameParameter = typeName != null ?
+                new ObjectParameter("TypeName", typeName) :
+                new ObjectParameter("TypeName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeeType>("EmpTypeSearchF", mergeOption, typeIDParameter, typeNameParameter);
+        }
     }
 }

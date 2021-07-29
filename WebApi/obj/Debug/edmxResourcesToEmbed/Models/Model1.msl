@@ -97,5 +97,14 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="EmpSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.EmployeeSearchSP" />
     <FunctionImportMapping FunctionImportName="DeptSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.DepartmentSearchSP" />
+    <FunctionImportMapping FunctionImportName="EmpTypeSearchSP" FunctionName="EmployeeDatabase.bacpacModel.Store.EmpTypeSearchSP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EmployeeDatabase.bacpacModel.EmpTypeSearchSP_Result">
+          <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
+          <ScalarProperty Name="EmployeeTypeName" ColumnName="EmployeeTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EmpTypeSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.EmpTypeSearchSP" />
   </EntityContainerMapping>
 </Mapping>
