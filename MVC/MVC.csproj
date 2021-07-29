@@ -135,6 +135,7 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EmployeeTypesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1924,6 +1925,7 @@
     <Content Include="Views\Shared\_SearchBar.cshtml" />
     <Content Include="Views\EmployeeTypes\Index.cshtml" />
     <Content Include="Views\EmployeeTypes\AddOrEdit.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
