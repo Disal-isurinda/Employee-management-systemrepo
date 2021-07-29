@@ -1,0 +1,75 @@
+﻿@model MVC.Models.mvcLeaveApply
+
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/dark-hive/jquery-ui.css" rel="stylesheet" />
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#LeaveFrom").datepicker();
+        });
+        $(document).ready(function () {
+            $("#LeaveTo").datepicker();
+        });
+
+
+    </script>
+
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.LeaveID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmpID)
+            @Html.EditorFor(model => model.EmpID)
+            @Html.ValidationMessageFor(model => model.EmpID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LeaveTypeID)
+            @Html.DropDownList("LeaveTypeID",
+                  (IEnumerable<SelectListItem>)ViewBag.list,
+                  "Select")
+
+            @Html.ValidationMessageFor(model => model.LeaveTypeID, "", new { @class = "text-danger" })
+
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LeaveFrom)
+            @Html.EditorFor(model => model.LeaveFrom)
+            @Html.ValidationMessageFor(model => model.LeaveFrom, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LeaveTo)
+            @Html.EditorFor(model => model.LeaveTo)
+            @Html.ValidationMessageFor(model => model.LeaveTo, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description)
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="submit" value="Apply" class="btn button">
+            <input type="reset" value="Reset" class="btn button">
+        </div>
+    }
+
+
+</div>

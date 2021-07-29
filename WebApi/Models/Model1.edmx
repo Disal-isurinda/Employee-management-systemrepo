@@ -117,14 +117,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="DepartmentSearchSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DeptID" Type="int" Mode="In" />
-          <Parameter Name="DeptName" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="EmployeeSearchSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EmpID" Type="int" Mode="In" />
-          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
-        </Function>
         <EntityContainer Name="EmployeeDatabasebacpacModelStoreContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="Employee" store:Type="Tables" />
           <EntitySet Name="LeaveApply" EntityType="Self.LeaveApply" Schema="Employee" store:Type="Tables" />
@@ -407,32 +399,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="DepartmentSearchSP" FunctionName="EmployeeDatabase.bacpacModel.Store.DepartmentSearchSP">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EmployeeDatabase.bacpacModel.DepartmentSearchSP_Result">
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
-                <ScalarProperty Name="DeptDescription" ColumnName="DeptDescription" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="EmployeeSearchSP" FunctionName="EmployeeDatabase.bacpacModel.Store.EmployeeSearchSP">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EmployeeDatabase.bacpacModel.EmployeeSearchSP_Result">
-                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="NIC" ColumnName="NIC" />
-                <ScalarProperty Name="MobileNum" ColumnName="MobileNum" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
-                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="EmpSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.EmployeeSearchSP" />
-          <FunctionImportMapping FunctionImportName="DeptSearchF" FunctionName="EmployeeDatabase.bacpacModel.Store.DepartmentSearchSP" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
