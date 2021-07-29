@@ -24,6 +24,7 @@ namespace MVC.Controllers
             }
             else
             {
+
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees").Result;
                 empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
             }
@@ -55,8 +56,24 @@ namespace MVC.Controllers
             return View(pagedempList);
         }
 
-        public ActionResult AddOrEdit(int id = 0)
+        public async System.Threading.Tasks.Task<ActionResult> AddOrEdit(int id = 0)
         {
+            var responseto = await GlobalVariables.WebApiClient.GetAsync("Departments").Result.Content.ReadAsAsync<IList<mvcDepartmentModel>>();
+
+            responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });
+
+            // var dataObjects = JsonConvert.DeserializeObject<AddressList>(json)
+            ViewBag.list = responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });
+
+            //------------------------------------
+
+            var response3 = await GlobalVariables.WebApiClient.GetAsync("EmployeeTypes").Result.Content.ReadAsAsync<IList<mvcEmployeeTypeModel>>();
+
+            response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
+
+            ViewBag.list2 = response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
+
+
             if (id == 0)
                 return View(new mvcEmployeeModel());
             else

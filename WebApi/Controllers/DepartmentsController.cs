@@ -15,11 +15,12 @@ namespace WebApi.Controllers
     public class DepartmentsController : ApiController
     {
         private DBModel db = new DBModel();
-
-        // GET: api/Departments
-        public IQueryable<Department> GetDepartments()
+        [HttpGet]
+        public List<Department> GetDepartments()
         {
-            return db.Departments;
+            List<Department> DepartmentList = new List<Department>();
+            DepartmentList = (from Department in db.Departments select Department).ToList();
+            return DepartmentList;
         }
 
         // GET: api/Departments/5
@@ -39,7 +40,7 @@ namespace WebApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutDepartment(int id, Department department)
         {
-           
+
 
             if (id != department.DeptID)
             {
@@ -71,7 +72,7 @@ namespace WebApi.Controllers
         [ResponseType(typeof(Department))]
         public IHttpActionResult PostDepartment(Department department)
         {
-            
+
 
             db.Departments.Add(department);
             db.SaveChanges();

@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApi.Models;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WebApi.Controllers
 {
@@ -39,7 +41,7 @@ namespace WebApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEmployee(int id, Employee employee)
         {
-           
+
 
             if (id != employee.EmpID)
             {
@@ -71,7 +73,7 @@ namespace WebApi.Controllers
         [ResponseType(typeof(Employee))]
         public IHttpActionResult PostEmployee(Employee employee)
         {
-            
+
 
             db.Employees.Add(employee);
             db.SaveChanges();
