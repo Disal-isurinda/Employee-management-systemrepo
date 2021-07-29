@@ -21,6 +21,8 @@ namespace MVC.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
+        public string DeptName { get; set; }
+        public string EmployeeTypeName { get; set; }
 
         public virtual mvcDepartmentModel Department { get; set; }
         public virtual mvcEmployeeModel EmployeeType { get; set; }

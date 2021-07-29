@@ -46,11 +46,11 @@
                     @*@Html.DisplayNameFor(model => model.Address)*@
                 </th>
                 <th>
-                    @Html.Label("Employee Type ID")
+                    @Html.Label("Employee Type Name")
                     @*@Html.DisplayNameFor(model => model.EmployeeTypeID)*@
                 </th>
                 <th>
-                    @Html.Label("Department ID")
+                    @Html.Label("Department Name")
                     @*@Html.DisplayNameFor(model => model.DeptID)*@
                 </th>
                 <th>
@@ -80,10 +80,10 @@
                         @Html.DisplayFor(modelItem => item.Address)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EmployeeTypeID)
+                        @Html.DisplayFor(modelItem => item.EmployeeType.EmployeeTypeName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DeptID)
+                        @Html.DisplayFor(modelItem => item.Department.DeptName)
                     </td>
                     <td>
                         <a href="@Url.Action("AddOrEdit", "Employees", new { id = item.EmpID })">Edit</a>
