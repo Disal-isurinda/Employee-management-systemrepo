@@ -1,26 +1,34 @@
-﻿<div id="searchBar" class="navbar-right" style="margin-top:8px; display: none;">
+﻿<div id="searchBar" @*class="navbar-right" style="margin-top:8px;*@ style="display:none !important;">
     @using (Html.BeginForm("Index", "Search", FormMethod.Post))
     {
-        <div class="form-inline my-2 my-lg-0">
+        <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-                <input id="sQuery" name="sQuery" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" value="@(TempData["sQuery"] != null ? TempData["sQuery"].ToString() : "")">
-                <span class="input-group-addon group-icon">
-                    <span id="searchIcon" class="glyphicon glyphicon-search"></span>
-                </span>
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                       aria-label="Search" aria-describedby="basic-addon2" id="sQuery" name="sQuery"
+                       value="@(TempData["sQuery"] != null ? TempData["sQuery"].ToString() : "")">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
             </div>
-            <button class="btn btn-primary btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </div>
     }
 </div>
+
+<h1 id="cusHead" class="h3 mt-4 mb-4 text-gray-800" style="display: none">WELCOME!</h1>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script>
     var url = window.location.href;
     var searchBar = document.getElementById("searchBar");
+    var cusHead = document.getElementById("cusHead");
 
     if (url.search("Employees") > 0) {
         searchBar.style.display = "block";
     } else if (url.search("Departments") > 0) {
         searchBar.style.display = "block";
+    } else {
+        cusHead.style.display = "block";
     }
 </script>
