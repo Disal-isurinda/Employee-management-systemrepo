@@ -1,43 +1,81 @@
-﻿@model IEnumerable<MVC.Models.mvcEmployeeTypeModel>
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<MVC.Models.mvcEmployeeTypeModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Employee Types";
 }
 
-<h2>Index</h2>
+<h2>Employee Types</h2>
 
 <p>
     <a href="@Url.Action("AddOrEdit","EmployeeTypes")">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeTypeID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeTypeName)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeTypeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeTypeName)
-            </td>
-            <td>
-                <a href="@Url.Action("AddOrEdit","EmployeeTypes",new { id = item.EmployeeTypeID})">Edit</a>
-                <a onclick="Delete(@item.EmployeeTypeID)"> Delete</a>
-            </td>
-        </tr>
-    }
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Employees Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
 
-</table>
+            @if (Model != null && Model.Count() > 0)
+            {
+                using (Html.BeginForm())
+                {
 
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>
+                                @Html.ActionLink("Employee Type ID", "Index",
+                          new { sortBy = ViewBag.IDSortParm })
+                            </th>
+                            <th>
+                                @Html.ActionLink("Employee Type Name", "Index",
+                          new { sortBy = ViewBag.NameSortParm })
+                            </th>
+                            <th>
+                                @Html.Label("Options")
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmployeeTypeID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("AddOrEdit", "EmployeeTypes", new { id = item.EmployeeTypeID })">Edit</a>
+                                    <a onclick="Delete(@item.EmployeeTypeID)"> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <script>
+                        document.write('<a href="' + document.referrer + '">Go Back</a>');
+                    </script>
+                }
+            }
+            else
+            {
+
+                <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
+                @Html.ActionLink("Back to Full List", "Index", "Employees")
+
+            }
+
+            <hr />
+
+            <div class="text-center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = Request["sortBy"] }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <script>
@@ -47,6 +85,5 @@
             }, null);
 
         }
-
     </script>
 }

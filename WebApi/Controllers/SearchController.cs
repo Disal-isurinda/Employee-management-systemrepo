@@ -32,5 +32,14 @@ namespace WebApi.Controllers
             var department = db.DeptSearchF(isQuery, sQuery).ToList();
             return Ok(department);
         }
+
+        [Route("api/Search/GetEmpType/{sQuery}")]
+        public IHttpActionResult GetEmpType(string sQuery)
+        {
+            var isQuery = -1;
+            Int32.TryParse(sQuery, out isQuery);
+            var emptypes = db.EmpTypeSearchF(isQuery, sQuery).ToList();
+            return Ok(emptypes);
+        }
     }
 }

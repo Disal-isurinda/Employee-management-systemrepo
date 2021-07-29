@@ -38,6 +38,14 @@ namespace MVC.Controllers
                     TempData["depList"] = depList;
                     return RedirectToAction("Index", "Departments");
                 }
+                else if (page == "EmployeeTypes")
+                {
+                    IEnumerable<mvcEmployeeTypeModel> depList;
+                    HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Search/GetEmpType/" + sQuery).Result;
+                    depList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeTypeModel>>().Result;
+                    TempData["empTypesList"] = depList;
+                    return RedirectToAction("Index", "EmployeeTypes");
+                }
             }
             return RedirectToAction("Index", page);
         }

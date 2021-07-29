@@ -7,3 +7,4 @@ using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:WebApi.Controllers.SearchController.GetEmployee(System.String)~System.Web.Http.IHttpActionResult")]
 [assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:WebApi.Controllers.SearchController.GetDepartment(System.String)~System.Web.Http.IHttpActionResult")]
+[assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:WebApi.Controllers.SearchController.GetEmpType(System.String)~System.Web.Http.IHttpActionResult")]
