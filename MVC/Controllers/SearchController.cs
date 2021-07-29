@@ -13,15 +13,18 @@ namespace MVC.Controllers
         public ActionResult Index(String sQuery)
         {
             TempData["sQuery"] = null;
+            //Getting Request URLs to change the Search Functions Accrodingly
             Uri uriaddress = new Uri(Request.UrlReferrer.ToString());
             string page = uriaddress.Segments[1].Replace("/", "");
             if (!string.IsNullOrEmpty(sQuery))
             {
+                //Keeping search Query for showing in the input box
                 TempData["sQuery"] = sQuery;
 
                 if (page == "Employees")
                 {
                     IEnumerable<mvcEmployeeModel> empList;
+                    //Getting the filtered results from the API
                     HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Search/GetEmployee/" + sQuery).Result;
                     empList = response.Content.ReadAsAsync<IEnumerable<mvcEmployeeModel>>().Result;
                     TempData["empList"] = empList;
