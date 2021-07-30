@@ -11,6 +11,24 @@ namespace MVC.Controllers
     {
         public ActionResult Register()
         {
+            string[] Roles = System.Web.Security.Roles.GetAllRoles();
+            List<string> RolesList = new List<string>();
+            foreach (var r in Roles)
+            {
+                if (HttpContext.User.IsInRole("Admin"))
+                {
+                    RolesList.Add(r);
+                }
+                else
+                {
+                    if (r != "Admin")
+                    {
+                        RolesList.Add(r);
+                    }
+                }
+
+
+            }
             return View();
         }
 
