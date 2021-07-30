@@ -29,11 +29,9 @@ namespace WebApi.Models
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<LeaveApply> LeaveApplies { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<EmployeeType> EmployeeTypes { get; set; }
         public virtual DbSet<LeaveType> LeaveTypes { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
         public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
         public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }

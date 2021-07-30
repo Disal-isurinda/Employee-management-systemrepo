@@ -14,6 +14,7 @@ namespace WebApi.Models
     
     public partial class aspnet_Users
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public aspnet_Users()
         {
@@ -38,6 +39,11 @@ namespace WebApi.Models
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aspnet_Roles> aspnet_Roles { get; set; }
-        public List<string> Roles { get; internal set; }
+        public object Roles { get; internal set; }
+        public string Password { get; internal set; }
+        public string email { get; internal set; }
+        public string passwordQuestion { get; internal set; }
+        public string passwordAnswer { get; internal set; }
+        public bool isApproved { get; internal set; }
     }
 }
