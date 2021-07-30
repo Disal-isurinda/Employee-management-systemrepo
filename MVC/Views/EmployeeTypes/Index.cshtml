@@ -8,12 +8,17 @@
 <h2>Employee Types</h2>
 
 <p>
-    <a href="@Url.Action("AddOrEdit","EmployeeTypes")">Create New</a>
+    <a href="@Url.Action("AddOrEdit","EmployeeTypes")" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-info-circle"></i>
+        </span>
+        <span class="text">Create New</span>
+    </a>
 </p>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Employees Table</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Employee Types Table</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -55,7 +60,7 @@
                         }
                     </table>
                     <script>
-                        document.write('<a href="' + document.referrer + '">Go Back</a>');
+                        document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
                     </script>
                 }
             }

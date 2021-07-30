@@ -3,22 +3,49 @@
     ViewBag.Title = "AddOrEdit";
 }
 
-<div class="form-body">
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(model => model.EmployeeTypeID)
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Departments Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
 
-        <table>
-            <tr>
-                <td>@Html.LabelFor(model => model.EmployeeTypeName)</td>
-                <td>@Html.EditorFor(model => model.EmployeeTypeName)</td>
-                <td> @Html.ValidationMessageFor(model => model.EmployeeTypeName)</td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Submit" class="btn button"></td>
-                <td><input type="reset" value="Reset" class="btn button"></td>
-                <td></td>
-            </tr>
-        </table>
-    }
+            <div class="form-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(model => model.EmployeeTypeID)
+
+                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <td>@Html.Label("Employee Type Name")</td>
+                            <td>@Html.EditorFor(model => model.EmployeeTypeName)</td>
+                            <td> @Html.ValidationMessageFor(model => model.EmployeeTypeName)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="reset" class="btn btn-warning btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    <span class="text">Reset</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Submit</span>
+                                </button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+        <script>
+            document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
+        </script>
+    </div>
 </div>
