@@ -18,6 +18,7 @@ namespace WebApi.Models
         public Employee()
         {
             this.LeaveApplies = new HashSet<LeaveApply>();
+            this.aspnet_Users = new HashSet<aspnet_Users>();
         }
     
         public int EmpID { get; set; }
@@ -28,12 +29,12 @@ namespace WebApi.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
-        public string DeptName { get; set; }
-        public string EmployeeTypeName { get; set; }
-
+    
         public virtual Department Department { get; set; }
         public virtual EmployeeType EmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LeaveApply> LeaveApplies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aspnet_Users> aspnet_Users { get; set; }
     }
 }
