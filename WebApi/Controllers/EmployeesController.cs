@@ -77,7 +77,6 @@ namespace WebApi.Controllers
 
             db.Employees.Add(employee);
             db.SaveChanges();
-
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
 
