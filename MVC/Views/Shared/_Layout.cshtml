@@ -147,10 +147,17 @@
                 <div class="container-fluid">
                     @RenderBody()
                     <hr />
-                    <footer>
-                        <p>&copy; @DateTime.Now.Year - EMS</p>
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; EMS @DateTime.Now.Year</span>
+                            </div>
+                        </div>
                     </footer>
+                    <!-- End of Footer -->
                 </div>
+                <!-- End of Page Content -->
             </div>
         </div>
     </div>
