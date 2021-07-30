@@ -3,62 +3,87 @@
     ViewBag.Title = "AddOrEdit";
 }
 
-<div class="form-body">
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(model => model.EmpID)
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Departments Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName)
-            @* @Html.DropDownListFor(model => model.DeptName, new SelectList(ViewBag.list))*@
+            <div class="form-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(model => model.EmpID)
 
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
+                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <td>@Html.Label("First Name")</td>
+                            <td>@Html.EditorFor(model => model.FirstName)</td>
+                            <td>@Html.ValidationMessageFor(model => model.FirstName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Last Name")</td>
+                            <td>@Html.EditorFor(model => model.LastName)</td>
+                            <td>@Html.ValidationMessageFor(model => model.LastName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("NIC")</td>
+                            <td>@Html.EditorFor(model => model.NIC)</td>
+                            <td>@Html.ValidationMessageFor(model => model.NIC)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Mobile No")</td>
+                            <td>@Html.EditorFor(model => model.MobileNum)</td>
+                            <td>@Html.ValidationMessageFor(model => model.MobileNum)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Address")</td>
+                            <td>@Html.EditorFor(model => model.Address)</td>
+                            <td>@Html.ValidationMessageFor(model => model.Address)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Employee Type ID")</td>
+                            <td>
+                                @Html.DropDownList("EmployeeTypeID",
+                                         (IEnumerable<SelectListItem>)ViewBag.list2,
+                                         "Select")
+                            </td>
+                            <td>@Html.ValidationMessageFor(model => model.EmployeeTypeID)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Department ID")</td>
+                            <td>
+                                @Html.DropDownList("DeptID",
+                                          (IEnumerable<SelectListItem>)ViewBag.list,
+                                          "Select")
+                            </td>
+                            <td>@Html.ValidationMessageFor(model => model.DeptID)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="reset" class="btn btn-warning btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    <span class="text">Reset</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Submit</span>
+                                </button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                }
+            </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName)
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NIC)
-            @Html.EditorFor(model => model.NIC)
-            @Html.ValidationMessageFor(model => model.NIC)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MobileNum)
-            @Html.EditorFor(model => model.MobileNum)
-            @Html.ValidationMessageFor(model => model.MobileNum)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address)
-            @Html.EditorFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeTypeID)
-            @Html.DropDownList("EmployeeTypeID",
-                 (IEnumerable<SelectListItem>)ViewBag.list2,
-                 "Select")
-            @Html.ValidationMessageFor(model => model.EmployeeTypeID)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DeptID)
-            @Html.DropDownList("DeptID",
-                  (IEnumerable<SelectListItem>)ViewBag.list,
-                  "Select")
-            @Html.ValidationMessageFor(model => model.DeptID)
-        </div>
-
-        <div class="form-group">
-            <input type="submit" value="Submit" class="btn button">
-            <input type="reset" value="Reset" class="btn button">
-        </div>
-    }
-
+        <script>
+            document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
+        </script>
+    </div>
+</div>

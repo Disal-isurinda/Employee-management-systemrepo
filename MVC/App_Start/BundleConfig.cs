@@ -25,6 +25,15 @@ namespace MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            StyleBundle myCSSBundle = new StyleBundle("~/Content/CustomCSS");
+            myCSSBundle.Include("~/Content/sb-admin-2.css", "~/Content/dataTables.bootstrap4.css", "~/Content/PagedList.css");
+            bundles.Add(myCSSBundle);
+
+            ScriptBundle mySCBundle = new ScriptBundle("~/bundles/CustomSC");
+            mySCBundle.Include("~/Scripts/jquery.easing.js", "~/Scripts/sb-admin-2.js", "~/Scripts/datatables/jquery.dataTables.js", "~/Scripts/datatables/dataTables.bootstrap4.js");
+            bundles.Add(mySCBundle);
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

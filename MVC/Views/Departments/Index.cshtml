@@ -2,76 +2,87 @@
 @model  PagedList.IPagedList<MVC.Models.mvcDepartmentModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Departments";
 }
 
-<h2>Index</h2>
+<h2>Departments</h2>
 
 <p>
-    <a href="@Url.Action("AddOrEdit","Departments")">Create New</a>
+    <a href="@Url.Action("AddOrEdit","Departments")" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-info-circle"></i>
+        </span>
+        <span class="text">Create New</span>
+    </a>
 </p>
 
-@if (Model != null && Model.Count() > 0)
-{
-    <table class="table">
-        <tr class="bg-success">
-            <th>
-                @*@Html.Label("Department ID")*@
-                @Html.ActionLink("Department ID", "Index",
-              new { sortBy = ViewBag.IDSortParm })
-                @*@Html.DisplayNameFor(model => model.DeptID)*@
-            </th>
-            <th>
-                @*@Html.Label("Department Name")*@
-                @Html.ActionLink("Department Name", "Index",
-              new { sortBy = ViewBag.DNameSortParm })
-                @*@Html.DisplayNameFor(model => model.DeptName)*@
-            </th>
-            <th>
-                @Html.Label("Department Description")
-                @*@Html.DisplayNameFor(model => model.DeptDescription)*@
-            </th>
-            <th>
-                @Html.Label("Options")
-            </th>
-        </tr>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Departments Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeptID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeptName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeptDescription)
-                </td>
-                <td>
-                    <a href="@Url.Action("AddOrEdit", "Departments", new { id = item.DeptID })">Edit</a>
-                    <a onclick="Delete(@item.DeptID)"> Delete</a>
-                </td>
-            </tr>
-        }
-    </table>
-    <script>
-        document.write('<a href="' + document.referrer + '">Go Back</a>');
-    </script>
-}
-else
-{
-    <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
-    @Html.ActionLink("Back to Full List", "Index", "Employees")
-}
+            @if (Model != null && Model.Count() > 0)
+            {
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <tr>
+                        <th>
 
-<hr />
+                            @Html.ActionLink("Department ID", "Index",
+                          new { sortBy = ViewBag.IDSortParm })
+                        </th>
+                        <th>
 
-<div class="text-center">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-    of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = Request["sortBy"] }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                            @Html.ActionLink("Department Name", "Index",
+                          new { sortBy = ViewBag.DNameSortParm })
+                        </th>
+                        <th>
+                            @Html.Label("Department Description")
+                        </th>
+                        <th>
+                            @Html.Label("Options")
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeptID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeptName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeptDescription)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("AddOrEdit", "Departments", new { id = item.DeptID })">Edit</a>
+                                <a onclick="Delete(@item.DeptID)"> Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <script>
+                    document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
+                </script>
+            }
+            else
+            {
+                <p class="h4 text-danger font-weight-bold text-center">NO ITEMS MATCHED YOUR SEARCH QUERY!</p>
+                @Html.ActionLink("Back to Full List", "Index", "Employees")
+            }
+
+            <hr />
+
+            <div class="text-center">
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortBy = Request["sortBy"] }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
+        </div>
+    </div>
 </div>
-
 @section scripts{
     <script>
         function Delete (id){

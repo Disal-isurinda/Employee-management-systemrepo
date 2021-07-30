@@ -160,6 +160,14 @@
       <Parameter Name="DeptID" Mode="In" Type="Int32" />
       <Parameter Name="DeptName" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="EmpTypeSearchSP" ReturnType="Collection(EmployeeDatabase.bacpacModel.EmpTypeSearchSP_Result)">
+      <Parameter Name="TypeID" Mode="In" Type="Int32" />
+      <Parameter Name="TypeName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EmpTypeSearchF" EntitySet="EmployeeTypes" ReturnType="Collection(EmployeeDatabase.bacpacModel.EmployeeType)">
+      <Parameter Name="TypeID" Mode="In" Type="Int32" />
+      <Parameter Name="TypeName" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="DepartmentSearchSP_Result">
     <Property Type="Int32" Name="DeptID" Nullable="false" />
@@ -175,5 +183,9 @@
     <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
     <Property Type="Int32" Name="EmployeeTypeID" Nullable="false" />
     <Property Type="Int32" Name="DeptID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="EmpTypeSearchSP_Result">
+    <Property Type="Int32" Name="EmployeeTypeID" Nullable="false" />
+    <Property Type="String" Name="EmployeeTypeName" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>
