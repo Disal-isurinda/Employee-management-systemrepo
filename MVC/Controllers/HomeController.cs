@@ -12,7 +12,7 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         private static string WebAPIURL = "http://localhost:58108/";
-        
+
 
         public async Task<ActionResult> IndexAsync()
         {
@@ -30,7 +30,7 @@ namespace MVC.Controllers
                     Session["TokenNumber"] = tokenBased;
                     Session["UserName"] = "admin";
 
-                } 
+                }
             }
             return Content(tokenBased);
 
@@ -66,10 +66,11 @@ namespace MVC.Controllers
 
             return View();
         }
-    
+
 
         private ActionResult Content(HttpClient tokenBased)
         {
             throw new NotImplementedException();
         }
     }
+}
