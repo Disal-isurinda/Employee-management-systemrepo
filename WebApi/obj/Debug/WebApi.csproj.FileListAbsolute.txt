@@ -514,3 +514,14 @@ C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.Web.WebPages.R
 C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Antlr3.Runtime.pdb
 C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\3rd year\User\Employee-management-systemrepo\WebApi\obj\Debug\WebApi.csproj.CopyComplete
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.Logging.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.Tokens.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.Web.Cors.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.Web.Http.Cors.dll
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.Logging.xml
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\Microsoft.IdentityModel.Tokens.xml
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\3rd year\User\Employee-management-systemrepo\WebApi\bin\System.Web.Http.Cors.xml

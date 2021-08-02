@@ -14,6 +14,8 @@ namespace WebApi.Models
     
     public partial class aspnet_Users
     {
+        internal string username;
+        internal string password;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public aspnet_Users()
