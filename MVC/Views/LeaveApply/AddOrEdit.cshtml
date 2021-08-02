@@ -1,0 +1,86 @@
+﻿@model MVC.Models.mvcLeaveApply
+
+@{ ViewBag.Title = "AddOrEdit"; }
+
+<link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/dark-hive/jquery-ui.css" rel="stylesheet" />
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#LeaveFrom").datepicker();
+        });
+        $(document).ready(function () {
+            $("#LeaveTo").datepicker();
+        });</script>
+
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Leave Form</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+
+            <div class="form-body">
+                @using (Html.BeginForm())
+                {
+    @Html.HiddenFor(model => model.LeaveID)
+                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <td>@Html.Label("Employee ID")</td>
+                            <td>@Html.EditorFor(model => model.EmpID)</td>
+                            <td>@Html.ValidationMessageFor(model => model.EmpID, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Leave Type ID")</td>
+                            <td>
+                                @Html.DropDownList("LeaveTypeID", (IEnumerable<SelectListItem>)ViewBag.list, "Select")
+                            </td>
+                            <td>@Html.ValidationMessageFor(model => model.LeaveTypeID, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Leave From")</td>
+                            <td>@Html.EditorFor(model => model.LeaveFrom)</td>
+                            <td>@Html.ValidationMessageFor(model => model.LeaveFrom, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Leave To")</td>
+                            <td>@Html.EditorFor(model => model.LeaveTo)</td>
+                            <td>@Html.ValidationMessageFor(model => model.LeaveTo, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Description")</td>
+                            <td>@Html.EditorFor(model => model.Description)</td>
+                            <td>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="reset" class="btn btn-warning btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    <span class="text">Reset</span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Submit</span>
+                                </button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>}
+            </div>
+        </div>
+        <script>
+            document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
+        </script>
+    </div>
+</div>

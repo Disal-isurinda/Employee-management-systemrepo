@@ -137,6 +137,8 @@
     <Compile Include="Controllers\EmployeeTypesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaveApplyController.cs" />
+    <Compile Include="Controllers\LeaveTypeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1927,9 +1929,12 @@
     <Content Include="Views\EmployeeTypes\Index.cshtml" />
     <Content Include="Views\EmployeeTypes\AddOrEdit.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\LeaveApply\Index.cshtml" />
+    <Content Include="Views\LeaveApply\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LeaveType\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
