@@ -16,7 +16,7 @@ namespace MVC.Models
             public string password { get; set; }
 
             public string email { get; set; }
-            //public int EmpID { get; set; }
+            public int EmpID { get; set; }
 
             // public string passwordQuestion { get; set; }
 
