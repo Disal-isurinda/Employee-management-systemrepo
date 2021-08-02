@@ -22,8 +22,8 @@ namespace WebApi.Models
         public string MobilePIN { get; set; }
         public string Email { get; set; }
         public string LoweredEmail { get; set; }
-        //public string PasswordQuestion { get; set; }
-        //public string PasswordAnswer { get; set; }
+        public string PasswordQuestion { get; set; }
+        public string PasswordAnswer { get; set; }
         public bool IsApproved { get; set; }
         public bool IsLockedOut { get; set; }
         public System.DateTime CreateDate { get; set; }
