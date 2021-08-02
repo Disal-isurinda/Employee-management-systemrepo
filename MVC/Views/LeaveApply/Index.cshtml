@@ -1,0 +1,92 @@
+﻿@model IEnumerable<MVC.Models.mvcLeaveApply>
+
+@{ ViewBag.Title = "Index"; }
+
+<p>
+    <a href="@Url.Action("AddOrEdit","LeaveApply")" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-info-circle"></i>
+        </span>
+        <span class="text">Create New</span>
+    </a>
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Leaves Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                <tr>
+
+                    <th>
+                        @Html.Label("Employee ID")
+                    </th>
+                    <th>
+                        @Html.Label("Leave From")
+                    </th>
+                    <th>
+                        @Html.Label("Leave To")
+                    </th>
+                    <th>
+                        @Html.Label("Description")
+                    </th>
+                    <th>
+                        @Html.Label("Leave Type ID")
+                    </th>
+                    <th>Actions</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveType.LeaveType1)
+        </td>
+        <td>
+            <a href="@Url.Action("AddOrEdit","LeaveApply",new {id=item.LeaveID })" class="btn btn-default"><i class="fa fa-pencil"></i>Edit</a>
+            <a onclick="Delete(@item.LeaveID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+        </td>
+    </tr>
+}
+            </table>
+            <script>
+                document.write('<a href="' + document.referrer + '" class="btn btn-light btn-icon-split"><span class="icon text-gray-600"><i class= "fas fa-arrow-left"></i></span ><span class="text">Go Back</span></a>');
+            </script>
+        </div>
+    </div>
+</div>
+
+@*<script>document.write('<a href="' + document.referrer + '">Go Back</a>');</script>*@
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+
+        });
+        function Delete(id) {
+            alertify.confirm('Leave Request', 'Are you sure to delete this request ?', function () {
+                window.location.href = '@Url.Action("Delete","LeaveApply")/' + id;
+            }, null);
+        }
+    </script>
+}
