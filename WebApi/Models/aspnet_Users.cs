@@ -22,6 +22,7 @@ namespace WebApi.Models
         {
             this.aspnet_PersonalizationPerUser = new HashSet<aspnet_PersonalizationPerUser>();
             this.aspnet_Roles = new HashSet<aspnet_Roles>();
+            this.aspnet_Membership = new HashSet<aspnet_Membership>();
         }
     
         public System.Guid ApplicationId { get; set; }
