@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using WebApi.Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using static WebApi.Models.MembershipProvider;
+using System.Web;
 
 namespace WebApi.Controllers
 {
@@ -78,6 +80,9 @@ namespace WebApi.Controllers
             db.Employees.Add(employee);
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
+            UsersModel usersModel = new UsersModel();
+            //usersModel.Roles = RolesList;
+            return CreatedAtRoute("DefaultApi", new { V = usersModel.EmpID= employee.EmpID},usersModel);
         }
 
         // DELETE: api/Employees/5
