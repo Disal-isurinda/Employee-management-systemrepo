@@ -28,12 +28,12 @@
                         <tr>
                             <td>@Html.Label("Department Name")</td>
                             <td> @Html.EditorFor(model => model.DeptName)</td>
-                            <td>@Html.ValidationMessageFor(model => model.DeptName, "" , new { @class="error"})</td>
+                            <td>@Html.ValidationMessageFor(model => model.DeptName, "" , new { @class="text-danger"})</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Department Description")</td>
                             <td>@Html.EditorFor(model => model.DeptDescription)</td>
-                            <td>@Html.ValidationMessageFor(model => model.DeptDescription, "", new { @class = "error" })</td>
+                            <td>@Html.ValidationMessageFor(model => model.DeptDescription, "", new { @class = "text-danger" })</td>
                         </tr>
                         <tr>
                             <td>

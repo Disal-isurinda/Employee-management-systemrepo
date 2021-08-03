@@ -47,6 +47,8 @@ namespace MVC.Controllers
             if (leave.LeaveID == 0)
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("LeaveApply", leave).Result;
+                HttpResponseMessage mailresponse = GlobalVariables.WebApiClient.PostAsJsonAsync("Email/PostLeaveApplyMail", leave).Result;
+
                 TempData["SuccessMessage"] = "Leave Requested Successfully";
             }
             else
