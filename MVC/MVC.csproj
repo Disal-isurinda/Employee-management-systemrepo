@@ -222,10 +222,11 @@
     <Content Include="Views\Shared\_SearchBar.cshtml" />
     <Content Include="Views\EmployeeTypes\Index.cshtml" />
     <Content Include="Views\EmployeeTypes\AddOrEdit.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Logon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
