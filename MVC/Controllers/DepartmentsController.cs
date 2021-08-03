@@ -71,15 +71,20 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(mvcDepartmentModel dep)
         {
-            if (dep.DeptID == 0)
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Departments", dep).Result;
-            }
-            else
-            {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Departments/" + dep.DeptID, dep).Result;
-            }
-            return RedirectToAction("Index");
+            if (ModelState.IsValid == true)
+            
+                if (dep.DeptID == 0)
+                {
+                    HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Departments", dep).Result;
+                }
+                else
+                {
+                    HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Departments/" + dep.DeptID, dep).Result;
+                }
+                return RedirectToAction("Index");
+            
+
+            
         }
 
         public ActionResult Delete(int id)

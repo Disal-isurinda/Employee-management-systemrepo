@@ -3,6 +3,13 @@
     ViewBag.Title = "AddOrEdit";
 }
 
+<style>
+    .error {
+        color: rebeccapurple;
+    }
+</style>
+
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Employees Form</h6>
@@ -19,27 +26,30 @@
                         <tr>
                             <td>@Html.Label("First Name")</td>
                             <td>@Html.EditorFor(model => model.FirstName)</td>
-                            <td>@Html.ValidationMessageFor(model => model.FirstName)</td>
+                            @*<td>@Html.ValidationMessageFor(model => model.FirstName)</td>*@
+                            <td>@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "error" })</td>
+
                         </tr>
                         <tr>
                             <td>@Html.Label("Last Name")</td>
                             <td>@Html.EditorFor(model => model.LastName)</td>
-                            <td>@Html.ValidationMessageFor(model => model.LastName)</td>
+                            <td>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "error" })</td>
+
                         </tr>
                         <tr>
                             <td>@Html.Label("NIC")</td>
                             <td>@Html.EditorFor(model => model.NIC)</td>
-                            <td>@Html.ValidationMessageFor(model => model.NIC)</td>
+                            <td>@Html.ValidationMessageFor(model => model.NIC, "", new { @class = "error" })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Mobile No")</td>
                             <td>@Html.EditorFor(model => model.MobileNum)</td>
-                            <td>@Html.ValidationMessageFor(model => model.MobileNum)</td>
+                            <td>@Html.ValidationMessageFor(model => model.MobileNum, "", new { @class = "error" })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Address")</td>
                             <td>@Html.EditorFor(model => model.Address)</td>
-                            <td>@Html.ValidationMessageFor(model => model.Address)</td>
+                            <td>@Html.ValidationMessageFor(model => model.Address, "", new { @class = "error" })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Employee Type ID")</td>

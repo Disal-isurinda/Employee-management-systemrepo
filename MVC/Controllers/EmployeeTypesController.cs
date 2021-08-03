@@ -74,7 +74,10 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(mvcEmployeeTypeModel empType)
         {
-            if (empType.EmployeeTypeID == 0)
+
+            if (ModelState.IsValid == true)
+
+                if (empType.EmployeeTypeID == 0)
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("EmployeeTypes", empType).Result;
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,10 +15,20 @@ namespace MVC.Models
         }
 
         public int EmpID { get; set; }
+        [Required(ErrorMessage = "Enter FirstName")]
+
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Enter LastName")]
+
         public string LastName { get; set; }
+        [Required(ErrorMessage = "Enter NIC")]
+
         public string NIC { get; set; }
+        [Required(ErrorMessage = "Enter MobileNum")]
+
         public int MobileNum { get; set; }
+        [Required(ErrorMessage = "Enter Address")]
+
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }

@@ -89,7 +89,9 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(mvcEmployeeModel emp)
         {
-            if (emp.EmpID == 0)
+            if (ModelState.IsValid == true)
+
+                if (emp.EmpID == 0)
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Employees", emp).Result;
             }

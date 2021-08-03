@@ -29,11 +29,11 @@
                 {
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th>
+                          <!--  <th>
 
                                 @Html.ActionLink("Employee ID", "Index",
                           new { sortBy = ViewBag.IDSortParm })
-                            </th>
+                            </th>-->
                             <th>
 
                                 @Html.ActionLink("First Name", "Index",
@@ -65,9 +65,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                                <!--<td>
                                     @Html.DisplayFor(modelItem => item.EmpID)
-                                </td>
+                                </td>-->
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FirstName)
                                 </td>

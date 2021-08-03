@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,7 +15,11 @@ namespace MVC.Models
         }
 
         public int DeptID { get; set; }
+
+        [Required(ErrorMessage = "Enter Department Name")]
         public string DeptName { get; set; }
+
+        [Required(ErrorMessage = "Enter Department Description")]
         public string DeptDescription { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

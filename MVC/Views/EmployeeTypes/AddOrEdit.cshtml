@@ -3,6 +3,13 @@
     ViewBag.Title = "AddOrEdit";
 }
 
+<style>
+    .error {
+        color: rebeccapurple;
+    }
+</style>
+
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Employee Type From</h6>
@@ -19,7 +26,7 @@
                         <tr>
                             <td>@Html.Label("Employee Type Name")</td>
                             <td>@Html.EditorFor(model => model.EmployeeTypeName)</td>
-                            <td> @Html.ValidationMessageFor(model => model.EmployeeTypeName)</td>
+                            <td>@Html.ValidationMessageFor(model => model.EmployeeTypeName, "", new { @class = "error" })</td>
                         </tr>
                         <tr>
                             <td>
@@ -49,3 +56,7 @@
         </script>
     </div>
 </div>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
