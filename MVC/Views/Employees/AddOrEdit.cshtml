@@ -58,7 +58,7 @@
                                          (IEnumerable<SelectListItem>)ViewBag.list2,
                                          "Select")
                             </td>
-                            <td>@Html.ValidationMessageFor(model => model.EmployeeTypeID)</td>
+                            <td>@Html.ValidationMessageFor(model => model.EmployeeTypeID, "", new { @class = "text-danger" })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Department ID")</td>
@@ -67,7 +67,7 @@
                                           (IEnumerable<SelectListItem>)ViewBag.list,
                                           "Select")
                             </td>
-                            <td>@Html.ValidationMessageFor(model => model.DeptID)</td>
+                            <td>@Html.ValidationMessageFor(model => model.DeptID, "", new { @class = "text-danger" })</td>
                         </tr>
                         <tr>
                             <td>
