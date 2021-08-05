@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using WebApi.Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.Security;
 
 namespace WebApi.Controllers
 {
@@ -77,6 +78,11 @@ namespace WebApi.Controllers
 
             db.Employees.Add(employee);
             db.SaveChanges();
+            string username = employee.FirstName + "." + employee.LastName;
+            string email = username + "@gmail.com";
+            string password = "ab@1234";
+            MembershipCreateStatus memcresta;
+            MembershipUser user = Membership.CreateUser(username, password, email, "question", "answer", true, out memcresta);
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
