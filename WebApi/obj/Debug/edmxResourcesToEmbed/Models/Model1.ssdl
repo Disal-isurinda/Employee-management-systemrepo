@@ -196,7 +196,7 @@
     <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="RoleDescription" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK__aspnet_Me__Appli__09A971A2">
+  <Association Name="FK__aspnet_Me__Appli__1BC821DD">
     <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
     <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
     <ReferentialConstraint>
@@ -220,7 +220,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__aspnet_Pa__Appli__0B91BA14">
+  <Association Name="FK__aspnet_Pa__Appli__1DB06A4F">
     <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
     <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
     <ReferentialConstraint>
@@ -232,7 +232,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__aspnet_Pe__PathI__0C85DE4D">
+  <Association Name="FK__aspnet_Pe__PathI__1EA48E88">
     <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
     <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -244,7 +244,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__aspnet_Pe__PathI__0D7A0286">
+  <Association Name="FK__aspnet_Pe__PathI__1F98B2C1">
     <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
     <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -280,7 +280,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__aspnet_Ro__Appli__10566F31">
+  <Association Name="FK__aspnet_Ro__Appli__22751F6C">
     <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
     <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
     <ReferentialConstraint>
@@ -304,7 +304,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__aspnet_Us__RoleI__123EB7A3">
+  <Association Name="FK__aspnet_Us__RoleI__245D67DE">
     <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
     <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
     <ReferentialConstraint>
@@ -407,7 +407,7 @@
     <EntitySet Name="EmployeeType" EntityType="Self.EmployeeType" Schema="Master" store:Type="Tables" />
     <EntitySet Name="LeaveTypes" EntityType="Self.LeaveTypes" Schema="Master" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="Master" store:Type="Tables" />
-    <AssociationSet Name="FK__aspnet_Me__Appli__09A971A2" Association="Self.FK__aspnet_Me__Appli__09A971A2">
+    <AssociationSet Name="FK__aspnet_Me__Appli__1BC821DD" Association="Self.FK__aspnet_Me__Appli__1BC821DD">
       <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
       <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
     </AssociationSet>
@@ -415,15 +415,15 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
     </AssociationSet>
-    <AssociationSet Name="FK__aspnet_Pa__Appli__0B91BA14" Association="Self.FK__aspnet_Pa__Appli__0B91BA14">
+    <AssociationSet Name="FK__aspnet_Pa__Appli__1DB06A4F" Association="Self.FK__aspnet_Pa__Appli__1DB06A4F">
       <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
       <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
     </AssociationSet>
-    <AssociationSet Name="FK__aspnet_Pe__PathI__0C85DE4D" Association="Self.FK__aspnet_Pe__PathI__0C85DE4D">
+    <AssociationSet Name="FK__aspnet_Pe__PathI__1EA48E88" Association="Self.FK__aspnet_Pe__PathI__1EA48E88">
       <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
       <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK__aspnet_Pe__PathI__0D7A0286" Association="Self.FK__aspnet_Pe__PathI__0D7A0286">
+    <AssociationSet Name="FK__aspnet_Pe__PathI__1F98B2C1" Association="Self.FK__aspnet_Pe__PathI__1F98B2C1">
       <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
       <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
     </AssociationSet>
@@ -435,7 +435,7 @@
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
       <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
     </AssociationSet>
-    <AssociationSet Name="FK__aspnet_Ro__Appli__10566F31" Association="Self.FK__aspnet_Ro__Appli__10566F31">
+    <AssociationSet Name="FK__aspnet_Ro__Appli__22751F6C" Association="Self.FK__aspnet_Ro__Appli__22751F6C">
       <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
       <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
     </AssociationSet>
@@ -443,7 +443,7 @@
       <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
       <End Role="aspnet_Users" EntitySet="aspnet_Users" />
     </AssociationSet>
-    <AssociationSet Name="FK__aspnet_Us__RoleI__123EB7A3" Association="Self.FK__aspnet_Us__RoleI__123EB7A3">
+    <AssociationSet Name="FK__aspnet_Us__RoleI__245D67DE" Association="Self.FK__aspnet_Us__RoleI__245D67DE">
       <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
       <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
     </AssociationSet>
