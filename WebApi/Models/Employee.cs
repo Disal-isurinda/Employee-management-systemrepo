@@ -28,6 +28,7 @@ namespace WebApi.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
+        public string Role { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual EmployeeType EmployeeType { get; set; }

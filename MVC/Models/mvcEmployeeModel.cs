@@ -32,6 +32,11 @@ namespace MVC.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
+        [Required(ErrorMessage = "Enter Role")]
+
+        public string Role { get; set; }
+
+
         public string DeptName { get; set; }
         public string EmployeeTypeName { get; set; }
 

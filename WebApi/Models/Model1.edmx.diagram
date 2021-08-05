@@ -16,6 +16,26 @@
         <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK_Employees_EmployeeType" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK_LeaveApply_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK_LeaveApply_LeaveTypes" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Applications" Width="1.5" PointX="5.375" PointY="13.875" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Membership" Width="1.5" PointX="12.125" PointY="11.875" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Paths" Width="1.5" PointX="7.625" PointY="21.75" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="9.875" PointY="25.125" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="12.125" PointY="18.25" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Profile" Width="1.5" PointX="12.125" PointY="8.375" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Roles" Width="1.5" PointX="7.625" PointY="12.375" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_SchemaVersions" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_Users" Width="1.5" PointX="9.875" PointY="12.75" />
+        <EntityTypeShape EntityType="EmployeeDatabase.bacpacModel.aspnet_WebEvent_Events" Width="1.5" PointX="7.375" PointY="6.75" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Me__Appli__09A971A2" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Pa__Appli__0B91BA14" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Ro__Appli__10566F31" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Us__Appli__534D60F1" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Me__UserI__6477ECF3" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Pe__PathI__0C85DE4D" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Pe__PathI__0D7A0286" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Pe__UserI__1F98B2C1" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.FK__aspnet_Pr__UserI__787EE5A0" />
+        <AssociationConnector Association="EmployeeDatabase.bacpacModel.aspnet_UsersInRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
