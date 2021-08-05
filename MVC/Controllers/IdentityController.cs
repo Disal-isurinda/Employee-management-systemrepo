@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using static MVC.Models.mvcUserModel;
+
 
 namespace MVC.Controllers
 {
@@ -51,7 +52,7 @@ namespace MVC.Controllers
 
 
         [HttpGet]
-        public ActionResult Logon()
+        public ActionResult LogOn()
         {
 
             if (Session["returnUrl"] == null)

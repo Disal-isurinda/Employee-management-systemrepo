@@ -1933,10 +1933,11 @@
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\LeaveApply\Index.cshtml" />
     <Content Include="Views\LeaveApply\AddOrEdit.cshtml" />
+    <Content Include="Views\Identity\LogOn.cshtml" />
+    <Content Include="Views\Identity\RoleCreation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Identity\" />
     <Folder Include="Views\LeaveType\" />
   </ItemGroup>
   <ItemGroup>

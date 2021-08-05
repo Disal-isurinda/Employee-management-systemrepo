@@ -9,8 +9,6 @@ using CompareAttribute = System.Web.Mvc.CompareAttribute;
 
 namespace MVC.Models
 {
-    public class mvcUserModel
-    {
         public class UsersModel
         {
             //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -99,4 +97,3 @@ namespace MVC.Models
             }
         }
     }
-}
