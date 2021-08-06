@@ -38,6 +38,11 @@ namespace WebApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLeaveApply(int id, LeaveApply leaveApply)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (id != leaveApply.LeaveID)
             {
                 return BadRequest();
@@ -68,6 +73,11 @@ namespace WebApi.Controllers
         [ResponseType(typeof(LeaveApply))]
         public IHttpActionResult PostLeaveApply(LeaveApply leaveApply)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             db.LeaveApplies.Add(leaveApply);
             db.SaveChanges();
 

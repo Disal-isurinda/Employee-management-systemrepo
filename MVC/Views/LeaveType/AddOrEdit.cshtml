@@ -39,7 +39,8 @@
                         <tr>
                             <td>@Html.Label("No Of Days ")</td>
                             <td>@Html.EditorFor(model => model.NoOfDays)</td>
-                            <td> @Html.ValidationMessageFor(model => model.NoOfDays)</td>
+                            @*<td> @Html.ValidationMessageFor(model => model.NoOfDays)</td>*@
+                            <td> @Html.ValidationMessageFor(model => model.NoOfDays, "", new { @class = "error" })</td>
                         </tr>
 
                         <tr>
