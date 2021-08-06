@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Mvc;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -22,7 +23,7 @@ namespace WebApi.Controllers
          }*/
 
         // GET: api/Departments
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public List<LeaveType> GetLeaveTypes()
         {
             List<LeaveType> LeaveTypeList = new List<LeaveType>();
@@ -47,6 +48,11 @@ namespace WebApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLeaveType(int id, LeaveType leaveType)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (id != leaveType.LeaveTypeID)
             {
                 return BadRequest();
@@ -77,11 +83,26 @@ namespace WebApi.Controllers
         [ResponseType(typeof(LeaveType))]
         public IHttpActionResult PostLeaveType(LeaveType leaveType)
         {
-            db.LeaveTypes.Add(leaveType);
-            db.SaveChanges();
+            bool leaveAlreadyExists = db.LeaveTypes.Any(x => x.LeaveType1 == leaveType.LeaveType1);
 
-            return CreatedAtRoute("DefaultApi", new { id = leaveType.LeaveTypeID }, leaveType);
+            if (leaveAlreadyExists != true)
+            {
+
+                db.LeaveTypes.Add(leaveType);
+                db.SaveChanges();
+
+                return CreatedAtRoute("DefaultApi", new { id = leaveType.LeaveTypeID }, leaveType);
+            }
+            else
+            {
+
+                return BadRequest();
+
+            }
+
         }
+
+
 
         // DELETE: api/LeaveTypes/5
         [ResponseType(typeof(LeaveType))]

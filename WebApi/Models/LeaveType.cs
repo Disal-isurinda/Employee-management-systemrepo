@@ -22,6 +22,7 @@ namespace WebApi.Models
     
         public int LeaveTypeID { get; set; }
         public string LeaveType1 { get; set; }
+        public Nullable<int> NoOfDays { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LeaveApply> LeaveApplies { get; set; }

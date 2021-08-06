@@ -192,6 +192,7 @@
           </Key>
           <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LeaveType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoOfDays" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -541,6 +542,7 @@
           <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LeaveType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="LeaveApplies" Relationship="Self.FK_LeaveApply_LeaveTypes" FromRole="LeaveTypes" ToRole="LeaveApply" />
+          <Property Name="NoOfDays" Type="Int32" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1035,6 +1037,7 @@
           <EntitySetMapping Name="LeaveTypes">
             <EntityTypeMapping TypeName="EmployeeDatabase.bacpacModel.LeaveType">
               <MappingFragment StoreEntitySet="LeaveTypes">
+                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
                 <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
                 <ScalarProperty Name="LeaveType1" ColumnName="LeaveType" />
               </MappingFragment>

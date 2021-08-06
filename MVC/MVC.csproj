@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EmployeeTypesController.cs" />
@@ -1931,10 +1932,12 @@
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\LeaveApply\Index.cshtml" />
     <Content Include="Views\LeaveApply\AddOrEdit.cshtml" />
+    <Content Include="Views\LeaveType\Index.cshtml" />
+    <Content Include="Views\LeaveType\AddOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\LeaveType\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

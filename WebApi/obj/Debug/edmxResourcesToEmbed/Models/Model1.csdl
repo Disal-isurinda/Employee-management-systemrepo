@@ -64,6 +64,7 @@
     <Property Name="LeaveTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LeaveType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="LeaveApplies" Relationship="Self.FK_LeaveApply_LeaveTypes" FromRole="LeaveTypes" ToRole="LeaveApply" />
+    <Property Name="NoOfDays" Type="Int32" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

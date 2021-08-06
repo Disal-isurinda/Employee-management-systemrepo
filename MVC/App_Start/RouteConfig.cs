@@ -38,6 +38,12 @@ namespace MVC
             );
 
             routes.MapRoute(
+               name: "CustomRoute5",
+               url: "Add-or-Update-LeaveType",
+               defaults: new { controller = "LeaveType", action = "AddOrEdit" }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

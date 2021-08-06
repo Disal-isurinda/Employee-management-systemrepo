@@ -59,6 +59,7 @@
     <EntitySetMapping Name="LeaveTypes">
       <EntityTypeMapping TypeName="EmployeeDatabase.bacpacModel.LeaveType">
         <MappingFragment StoreEntitySet="LeaveTypes">
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
           <ScalarProperty Name="LeaveTypeID" ColumnName="LeaveTypeID" />
           <ScalarProperty Name="LeaveType1" ColumnName="LeaveType" />
         </MappingFragment>

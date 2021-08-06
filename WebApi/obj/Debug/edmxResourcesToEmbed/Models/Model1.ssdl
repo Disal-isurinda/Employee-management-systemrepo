@@ -187,6 +187,7 @@
     </Key>
     <Property Name="LeaveTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LeaveType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoOfDays" Type="int" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
