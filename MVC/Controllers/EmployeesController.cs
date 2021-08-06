@@ -58,6 +58,9 @@ namespace MVC.Controllers
 
         public async System.Threading.Tasks.Task<ActionResult> AddOrEdit(int id = 0)
         {
+            //var list = new List<string>() { "User", "Admin" };
+            //ViewBag.list = list;
+
             var responseto = await GlobalVariables.WebApiClient.GetAsync("Departments").Result.Content.ReadAsAsync<IList<mvcDepartmentModel>>();
 
             responseto.Select(d => new SelectListItem { Text = d.DeptName, Value = d.DeptID.ToString() });

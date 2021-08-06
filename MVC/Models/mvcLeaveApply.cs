@@ -17,15 +17,22 @@ namespace MVC.Models
 
         [Display(Name = "Leave From ")]
         [Required]
-       // [DataType(DataType.Date)]
+        // [DataType(DataType.Date)]
+        [DataType(DataType.Date)]
+
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime LeaveFrom { get; set; }
+        //public System.DateTime LeaveFrom { get; set; }
+        public Nullable<System.DateTime> LeaveFrom { get; set; }
 
         [Required]
         [Display(Name = "Leave To ")]
-       // [DataType(DataType.Date)]
+        // [DataType(DataType.Date)]
+        [DataType(DataType.Date)]
+
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public System.DateTime LeaveTo { get; set; }
+        //public System.DateTime LeaveTo { get; set; }
+        public Nullable<System.DateTime> LeaveTo { get; set; }
+
 
         [Display(Name = "Description ")]
         [Required]
