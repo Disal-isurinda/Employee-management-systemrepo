@@ -513,3 +513,4 @@ C:\3rd year\Latest Authentication user\WebApi\obj\Debug\WebApi.csproj.CoreCompil
 C:\3rd year\Latest Authentication user\WebApi\obj\Debug\WebApi.csproj.CopyComplete
 C:\3rd year\Latest Authentication user\WebApi\obj\Debug\WebApi.dll
 C:\3rd year\Latest Authentication user\WebApi\obj\Debug\WebApi.pdb
+C:\3rd year\Latest Authentication user\WebApi\obj\Debug\WebApi.csproj.AssemblyReference.cache

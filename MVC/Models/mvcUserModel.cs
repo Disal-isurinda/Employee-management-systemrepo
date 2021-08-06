@@ -9,8 +9,6 @@ using CompareAttribute = System.Web.Mvc.CompareAttribute;
 
 namespace MVC.Models
 {
-    public class mvcUserModel
-    {
         public class UsersModel
         {
             //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -69,6 +67,12 @@ namespace MVC.Models
 
         public class RolesModel
         {
+
+            //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+            //public RolesModel()
+            //{
+            //    this.RoleName = new HashSet<RolesModel>();
+            //}
             public string RoleName { get; set; }
         }
 
@@ -99,4 +103,3 @@ namespace MVC.Models
             }
         }
     }
-}

@@ -1,57 +1,18 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using static MVC.Models.mvcUserModel;
+
 
 namespace MVC.Controllers
 {
     public class IdentityController : Controller
     {
-        public ActionResult Register()
-        {
-
-            string[] Roles = System.Web.Security.Roles.GetAllRoles();
-            List<string> RolesList = new List<string>();
-            foreach (var r in Roles)
-            {
-                if (HttpContext.User.IsInRole("Admin"))
-                {
-                    RolesList.Add(r);
-                }
-                else
-                {
-                    if (r != "Admin")
-                    {
-                        RolesList.Add(r);
-                    }
-                }
-
-
-            }
-            UsersModel usersModel = new UsersModel();
-            usersModel.Roles = RolesList;
-            return View(usersModel);
-
-        }
-        [HttpPost]
-        public ActionResult Register(UsersModel usersModel)
-        {
-            MembershipCreateStatus memCreSta;
-            Membership.CreateUser(usersModel.username, usersModel.password, usersModel.email, usersModel.passwordQuestion, usersModel.passwordAnswer, usersModel.isApproved, out memCreSta);
-            if (memCreSta == MembershipCreateStatus.Success)
-            {
-                System.Web.Security.Roles.AddUsersToRole(new[] { usersModel.username }, usersModel.Roles[0]);
-                return RedirectToAction("Index", "Home");
-            }
-            return View(usersModel);
-        }
-
-
         [HttpGet]
-        public ActionResult Logon()
+        public ActionResult LogOn()
         {
 
             if (Session["returnUrl"] == null)
@@ -176,8 +137,6 @@ namespace MVC.Controllers
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
-            // See http://go.microsoft.com/fwlink/?LinkID=177550 for
-            // a full list of status codes.
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
