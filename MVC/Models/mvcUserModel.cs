@@ -67,6 +67,12 @@ namespace MVC.Models
 
         public class RolesModel
         {
+
+            //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+            //public RolesModel()
+            //{
+            //    this.RoleName = new HashSet<RolesModel>();
+            //}
             public string RoleName { get; set; }
         }
 

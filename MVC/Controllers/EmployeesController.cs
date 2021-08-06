@@ -73,6 +73,28 @@ namespace MVC.Controllers
 
             ViewBag.list2 = response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
 
+            var response4 = await GlobalVariables.WebApiClient.GetAsync("Roles").Result.Content.ReadAsAsync<IList<RolesModel>>();
+            string[] Roles = System.Web.Security.Roles.GetAllRoles();
+            List<string> RolesList = new List<string>();
+            foreach (var r in Roles)
+            {
+                if (HttpContext.User.IsInRole("Admin"))
+                {
+                    RolesList.Add(r);
+                }
+                else
+                {
+                    if (r != "Admin")
+                    {
+                        RolesList.Add(r);
+                    }
+                }
+
+
+            }
+            UsersModel usersModel = new UsersModel();
+            usersModel.Roles = RolesList;
+
 
             if (id == 0)
                 return View(new mvcEmployeeModel());
