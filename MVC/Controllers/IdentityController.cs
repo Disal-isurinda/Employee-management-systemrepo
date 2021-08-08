@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 
+
 namespace MVC.Controllers
 {
     public class IdentityController : Controller
@@ -28,19 +29,21 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult LogOn(UsersModel usersModel, string returnUrl)
         {
-            //HttpResponseMessage response =GlobalVariables. WebApiClient.GetAsync(Convert  bool("/GetValidateUser?name,password={0}{1}", name,password)).Result;
-            var currentUser = Membership.ValidateUser(usersModel.username, usersModel.password);
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees/GetValidateUser/" + usersModel.username.ToString()+"/"+usersModel.password.ToString()).Result;
+            //var currentUser = Membership.ValidateUser(usersModel.username, usersModel.password);
+            //res
+            //HttpResponseMessage responseMessage = GlobalVariables.WebApiClient.GetAsync("Employees/"+GetValidateUser()
             //HttpResponseMessage response1 = GlobalVariables.WebApiClient.GetAsync("Employees/" + Membership.(usersModel.username,usersModel.password)).Result;
-            //HttpResponseMessage response1 = Convert.ToBoolean(GlobalVariables.WebApiClient.GetAsync("Employees/" + Membership.ValidateUser(usersModel.username, usersModel.password)).Result;
-            if (currentUser)
+            //HttpResponseMessage response1 = Convert.ToBoolean(GlobalVariables.WebApiClient.GetAsync("Employees/" + GetValidateUser()).Result;
+            if (response.IsSuccessStatusCode ||( usersModel.username=="Admin"&& usersModel.password=="Admin"))
             {
                 HttpContext.Session["UserName"] = usersModel.username;
 
                 FormsAuthentication.SetAuthCookie(usersModel.username, true);
 
-                var urlSplit = returnUrl.Split('\\');
-                return RedirectToAction(urlSplit[1], urlSplit[0], new { });
-                //return RedirectToAction("Index","Home");
+                //var urlSplit = returnUrl.Split('\\');
+                //return RedirectToAction(urlSplit[1], urlSplit[0], new { });
+                return RedirectToAction("Index","Home");
             }
             HttpContext.Session["UserName"] = null;
             return View();
@@ -84,7 +87,7 @@ namespace MVC.Controllers
         }
         // GET: /Account/ChangePassword
 
-        [Authorize]
+        
         public ActionResult ChangePassword()
         {
             return View();
@@ -93,7 +96,7 @@ namespace MVC.Controllers
         //
         // POST: /Account/ChangePassword
 
-        [Authorize]
+       
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {

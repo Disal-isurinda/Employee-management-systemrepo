@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace MVC
 {
@@ -25,6 +26,25 @@ namespace MVC
             if (ex is HttpException && ((HttpException)ex).GetHttpCode() == 404)
             {
                 Response.Redirect("Error/PageNotFound");
+            }
+            if (!System.Web.Security.Roles.RoleExists("Admin"))
+            {
+                System.Web.Security.Roles.CreateRole("Admin");
+            }
+
+            if (!System.Web.Security.Roles.RoleExists("User"))
+            {
+                System.Web.Security.Roles.CreateRole("User");
+            }
+
+            if (Membership.GetUser("Admin") == null)
+            {
+                MembershipCreateStatus memCreSta;
+                Membership.CreateUser("Admin", "Admin", "Admin@gmail.com", "Admin", "Admin", true, out memCreSta);
+                if (memCreSta == MembershipCreateStatus.Success)
+                {
+                    System.Web.Security.Roles.AddUsersToRole(new[] { "Admin" }, "Admin");
+                }
             }
         }
     }

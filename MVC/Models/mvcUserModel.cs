@@ -17,8 +17,10 @@ namespace MVC.Models
             //    this.User = new HashSet<UsersModel>();
             //}
             public string username { get; set; }
+            [Required(ErrorMessage = "Enter Username")]
 
             public string password { get; set; }
+            [Required(ErrorMessage = "Enter Password")]
 
             public string email { get; set; }
 
@@ -38,7 +40,7 @@ namespace MVC.Models
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 4)]
             [DataType(DataType.Password)]
             [Display(Name = "New password")]
             public string NewPassword { get; set; }
@@ -55,13 +57,15 @@ namespace MVC.Models
             [Required]
             [Display(Name = "User name")]
             public string UserName { get; set; }
+            //[Required(ErrorMessage = "Enter Username")]
 
             [Required]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
+            //[Required(ErrorMessage = "Enter Role")] 
 
-            [Display(Name = "Remember me?")]
+        [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
 
