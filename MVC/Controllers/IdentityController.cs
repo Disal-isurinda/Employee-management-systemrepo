@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -17,60 +18,60 @@ namespace MVC.Controllers
 
             if (Session["returnUrl"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return View();
             }
 
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Logon(UsersModel usersModel, string returnUrl)
-        //{
-
-
-        //    // var currentUser =  db.Users.Where(w => w.UserName == User.UserName && w.Password == User.Password).FirstOrDefault();
-
-        //    var currentUser = Membership.ValidateUser(usersModel.username, usersModel.password);
-        //    if (currentUser)
-        //    {
-        //        HttpContext.Session["UserName"] = usersModel.username;
-
-        //        FormsAuthentication.SetAuthCookie(usersModel.username, true);
-
-        //        var urlSplit = returnUrl.Split('\\');
-        //        return RedirectToAction(urlSplit[1], urlSplit[0], new { });
-        //        //return RedirectToAction("Index","Home", new { });
-        //    }
-        //    HttpContext.Session["UserName"] = null;
-        //    return View();
-        //}
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult LogOn(UsersModel usersModel, string returnUrl)
         {
-            if (ModelState.IsValid)
+            //HttpResponseMessage response =GlobalVariables. WebApiClient.GetAsync(Convert  bool("/GetValidateUser?name,password={0}{1}", name,password)).Result;
+            var currentUser = Membership.ValidateUser(usersModel.username, usersModel.password);
+            //HttpResponseMessage response1 = GlobalVariables.WebApiClient.GetAsync("Employees/" + Membership.(usersModel.username,usersModel.password)).Result;
+            //HttpResponseMessage response1 = Convert.ToBoolean(GlobalVariables.WebApiClient.GetAsync("Employees/" + Membership.ValidateUser(usersModel.username, usersModel.password)).Result;
+            if (currentUser)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
-            }
+                HttpContext.Session["UserName"] = usersModel.username;
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+                FormsAuthentication.SetAuthCookie(usersModel.username, true);
+
+                var urlSplit = returnUrl.Split('\\');
+                return RedirectToAction(urlSplit[1], urlSplit[0], new { });
+                //return RedirectToAction("Index","Home");
+            }
+            HttpContext.Session["UserName"] = null;
+            return View();
         }
+        //[HttpPost]
+        //public ActionResult LogOn(LogOnModel model, string returnUrl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (Membership.ValidateUser(model.UserName, model.Password))
+        //        {
+        //            FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+        //            if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+        //                && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+        //            {
+        //                return Redirect(returnUrl);
+        //            }
+        //            else
+        //            {
+        //                return RedirectToAction("Index", "Home");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+        //        }
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
 
         public ActionResult Logout()

@@ -84,10 +84,12 @@ namespace WebApi.Controllers
             string password = "ab@1234";
             MembershipCreateStatus memcresta;
             MembershipUser user = Membership.CreateUser(username, password, email, "question", "answer", true, out memcresta);
-            
-
+            var User = Membership.GetUser(username);
+            var currentUser = Membership.ValidateUser(username, password);
+     
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
+      
 
         // DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]
@@ -118,5 +120,24 @@ namespace WebApi.Controllers
         {
             return db.Employees.Count(e => e.EmpID == id) > 0;
         }
+        //GET- Retrive Data
+        public IHttpActionResult GetValidateUser(string username, string password)
+        {
+            //DBModel db = new DBModel();
+            //var result = db.Users.Where(Membership.GetUser => .username == username && x.password == password).FirstOrDefault();
+            //var currentUser = (Membership.ValidateUser(username, password));
+            var currentUser = Membership.ValidateUser(username, password) ;
+            return Ok(currentUser );
+
+            //if (result != null)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+        }
     }
+
 }
