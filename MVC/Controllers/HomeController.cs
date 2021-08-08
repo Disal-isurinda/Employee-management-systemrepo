@@ -9,7 +9,7 @@ namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
-        [CustomAuthFilter]
+       
         public ActionResult Index()
         {
             HttpContext.Session["returnUrl"] = "Home\\Index";
@@ -22,7 +22,7 @@ namespace MVC.Controllers
 
             return View();
         }
-
+        [CustomAuthFilter]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

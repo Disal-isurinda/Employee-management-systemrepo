@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Mvc;
 
+
 namespace MVC.Controllers
 {
     public class EmployeesController : Controller
@@ -55,7 +56,7 @@ namespace MVC.Controllers
             pagedempList = empList.ToPagedList(pageIndex, pageSize);
             return View(pagedempList);
         }
-
+        //[Authorize(Roles = "Admin")]
         public async System.Threading.Tasks.Task<ActionResult> AddOrEdit(int id = 0)
         {
             var responseto = await GlobalVariables.WebApiClient.GetAsync("Departments").Result.Content.ReadAsAsync<IList<mvcDepartmentModel>>();
@@ -73,27 +74,27 @@ namespace MVC.Controllers
 
             ViewBag.list2 = response3.Select(r => new SelectListItem { Text = r.EmployeeTypeName, Value = r.EmployeeTypeID.ToString() });
 
-           // var response4 = await GlobalVariables.WebApiClient.GetAsync("Roles").Result.Content.ReadAsAsync<IList<RolesModel>>();
-            //string[] Roles = System.Web.Security.Roles.GetAllRoles();
-            //List<string> RolesList = new List<string>();
-            //foreach (var r in Roles)
-            //{
-            //    if (HttpContext.User.IsInRole("Admin"))
-            //    {
-            //        RolesList.Add(r);
-            //    }
-            //    else
-            //    {
-            //        if (r != "Admin")
-            //        {
-            //            RolesList.Add(r);
-            //        }
-            //    }
+            //var response4 = await GlobalVariables.WebApiClient.GetAsync("Roles").Result.Content.ReadAsAsync<IList<RolesModel>>();
+            string[] Roles = System.Web.Security.Roles.GetAllRoles();
+            List<string> RolesList = new List<string>();
+            foreach (var role in Roles)
+            {
+                if (HttpContext.User.IsInRole("Admin"))
+                {
+                    RolesList.Add(role);
+                }
+                else
+                {
+                    if (role != "Admin")
+                    {
+                        RolesList.Add(role);
+                    }
+                }
 
 
-            //}
-            //UsersModel usersModel = new UsersModel();
-            //usersModel.Roles = RolesList;
+            }
+            UsersModel usersModel = new UsersModel();
+            usersModel.Roles = RolesList;
 
 
             if (id == 0)
@@ -107,7 +108,7 @@ namespace MVC.Controllers
                 // return View();
             }
         }
-
+        //[CustomAuthFilter]
         [HttpPost]
         public ActionResult AddOrEdit(mvcEmployeeModel emp)
         {
@@ -123,7 +124,7 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [CustomAuthFilter]
         public ActionResult Delete(int id)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Employees/" + id.ToString()).Result;

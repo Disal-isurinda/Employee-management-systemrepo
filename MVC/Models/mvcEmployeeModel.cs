@@ -13,6 +13,7 @@ namespace MVC.Models
         {
             this.LeaveApplies = new HashSet<mvcLeaveApply>();
         }
+    
 
         public int EmpID { get; set; }
         [Required(ErrorMessage = "Enter FirstName")]
@@ -32,9 +33,10 @@ namespace MVC.Models
         public string Address { get; set; }
         public int EmployeeTypeID { get; set; }
         public int DeptID { get; set; }
-        [Required(ErrorMessage = "Enter Role")]
+        //[Required(ErrorMessage = "Enter Role")]
 
         public string Role { get; set; }
+        [Required(ErrorMessage = "Enter Role")]
 
 
         public string DeptName { get; set; }

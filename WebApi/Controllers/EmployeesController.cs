@@ -85,8 +85,28 @@ namespace WebApi.Controllers
             MembershipCreateStatus memcresta;
             MembershipUser user = Membership.CreateUser(username, password, email, "question", "answer", true, out memcresta);
             var User = Membership.GetUser(username);
-            var currentUser = Membership.ValidateUser(username, password);
-     
+           // var currentUser = Membership.ValidateUser(username, password);
+            //string[] Roles = System.Web.Security.Roles.GetAllRoles();
+            //List<string> RolesList = new List<string>();
+            //foreach (var role in Roles)
+            //{
+            //    if (HttpContext.User.IsInRole("Admin"))
+            //    {
+            //        RolesList.Add(role);
+            //    }
+            //    else
+            //    {
+            //        if (role != "Admin")
+            //        {
+            //            RolesList.Add(role);
+            //        }
+            //    }
+
+
+            //}
+            //UsersModel usersModel = new UsersModel();
+            //usersModel.Roles = RolesList;
+
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
       
@@ -120,24 +140,35 @@ namespace WebApi.Controllers
         {
             return db.Employees.Count(e => e.EmpID == id) > 0;
         }
+        [HttpGet]
         //GET- Retrive Data
+        //[ResponseType(typeof(User))]
+        [Route("api/Employees/GetValidateUser/{username}/{password}")]
         public IHttpActionResult GetValidateUser(string username, string password)
         {
-            //DBModel db = new DBModel();
-            //var result = db.Users.Where(Membership.GetUser => .username == username && x.password == password).FirstOrDefault();
-            //var currentUser = (Membership.ValidateUser(username, password));
-            var currentUser = Membership.ValidateUser(username, password) ;
-            return Ok(currentUser );
+            User user = new User();
+            user.UserName = username;
+            user.Password = password;
+            DBModel db = new DBModel();
+            // var result = db.Users.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
+            var result = Membership.ValidateUser(username, password);
 
-            //if (result != null)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
+        //var result = db.Users.Where(Membership.GetUser => .username == username && x.password == password).FirstOrDefault();
+        //var currentUser = (Membership.ValidateUser(username, password));
+        //var currentUser = Membership.ValidateUser(user.UserName, user.Password) ;
+            // return Ok(currentUser );
+            //return Ok(user);
+        
     }
+
 
 }
