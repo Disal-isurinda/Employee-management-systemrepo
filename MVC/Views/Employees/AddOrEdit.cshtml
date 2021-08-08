@@ -71,8 +71,13 @@
                     </tr>
                     <tr>
                         <td>@Html.Label("Role")</td>
-                        <td>@Html.EditorFor(model => model.Role)</td>
-                        <td>@Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })</td>
+                        <td>
+                            @Html.DropDownList("RolesList",
+                                      (IEnumerable<SelectListItem>)ViewBag.list,
+                                      "Select")
+                        </td>
+                        @*<td>@Html.EditorFor(model => model.Role)</td>*@
+                        <td>@Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
                         <td>

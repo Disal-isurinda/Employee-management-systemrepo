@@ -44,5 +44,6 @@ namespace MVC.Models
         public virtual mvcEmployeeModel EmployeeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<mvcLeaveApply> LeaveApplies { get; set; }
+        public virtual RolesModel Roles { get; set; }
     }
 }

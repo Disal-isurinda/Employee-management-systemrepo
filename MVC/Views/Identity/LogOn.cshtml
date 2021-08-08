@@ -1,6 +1,7 @@
 ﻿@model MVC.Models.LogOnModel
 
 @{
+    //Layout = null;
     ViewBag.Title = "LogOn";
 }
 
@@ -9,10 +10,12 @@
     Please enter your user name and password.
 </p>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+   // @Html.Hidden("returnUrl", Session["returnUrl"].ToString())
+
+
     <div class="form-horizontal">
         <h4>LogOnModel</h4>
         <hr />

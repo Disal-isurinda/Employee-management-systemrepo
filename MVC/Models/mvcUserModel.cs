@@ -98,7 +98,7 @@ namespace MVC.Models
             {
                 if (filterContext.Result != null && filterContext.Result is HttpUnauthorizedResult)
                 {
-                    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary { { "action", "Logon" }, { "controller", "Identity" } });
+                    filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary { { "action", "LogOn" }, { "controller", "Identity" } });
                 }
             }
         }
