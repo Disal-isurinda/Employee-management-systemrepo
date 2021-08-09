@@ -44,12 +44,27 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult AddOrEdit(mvcLeaveApply leave)
         {
-            if (leave.LeaveID == 0)
+
+            if (ModelState.IsValid == true)
+
+                if (leave.LeaveID == 0)
+
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("LeaveApply", leave).Result;
                 HttpResponseMessage mailresponse = GlobalVariables.WebApiClient.PostAsJsonAsync("Email/PostLeaveApplyMail", leave).Result;
+                    if (ModelState.IsValid == true)
+                        if (response.IsSuccessStatusCode)
+                        {
+                            TempData["SuccessMessage"] = "Leave Requested Successfully";
+                        }
 
-                TempData["SuccessMessage"] = "Leave Requested Successfully";
+
+                        else
+                        {
+                            TempData["SuccessMessage"] = "Already Added";
+                        }
+
+                    //TempData["SuccessMessage"] = "Leave Requested Successfully";
             }
             else
             {

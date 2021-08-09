@@ -36,7 +36,7 @@
                             <td>@Html.ValidationMessageFor(model => model.EmpID, "", new { @class = "text-danger" })</td>
                         </tr>
                         <tr>
-                            <td>@Html.Label("Leave Type ID")</td>
+                            <td>@Html.Label("Leave Type")</td>
                             <td>
                                 @Html.DropDownList("LeaveTypeID", (IEnumerable<SelectListItem>)ViewBag.list, "Select")
                             </td>

@@ -73,10 +73,37 @@ namespace WebApi.Controllers
         [ResponseType(typeof(LeaveApply))]
         public IHttpActionResult PostLeaveApply(LeaveApply leaveApply)
         {
-            if (!ModelState.IsValid)
+            bool leaveAlreadyExists = db.LeaveApplies.Any(x => x.EmpID == leaveApply.EmpID);
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            //  bool notEmp = db.Employees.Any(x => x.EmpID == leaveApply.EmpID);
+            // bool leaveAlreadyExists = db.LeaveApplies.Any(x => x.EmpID == leaveApply.EmpID);
+           // var leaveCount = db.LeaveApplies.Where(x => x.EmpID == leaveApply.EmpID && x.LeaveTypeID == leaveApply.LeaveTypeID).Count();
+
+           // var allowedCount = db.LeaveTypes.Where(y => y.LeaveTypeID == leaveApply.LeaveTypeID).Select(y => new { y.NoOfDays });
+
+
+           
+            if (leaveAlreadyExists != true)
+             {
+            db.LeaveApplies.Add(leaveApply);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = leaveApply.LeaveID }, leaveApply);
+              }
+              else
             {
-                return BadRequest(ModelState);
-            }
+
+                  return BadRequest();
+
+               }
+
+
 
             db.LeaveApplies.Add(leaveApply);
             db.SaveChanges();
