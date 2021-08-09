@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using WebApi.Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.Security;
 
 namespace WebApi.Controllers
 {
@@ -77,6 +78,12 @@ namespace WebApi.Controllers
 
             db.Employees.Add(employee);
             db.SaveChanges();
+            string username = employee.FirstName + "." + employee.LastName;
+            string email = username + "@gmail.com";
+            string password = "ab@1234";
+            MembershipCreateStatus memcresta;
+            MembershipUser user = Membership.CreateUser(username, password, email, "question", "answer", true, out memcresta);
+            var User = Membership.GetUser(username);
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
@@ -109,6 +116,29 @@ namespace WebApi.Controllers
         private bool EmployeeExists(int id)
         {
             return db.Employees.Count(e => e.EmpID == id) > 0;
+        }
+
+        [HttpGet]
+        //GET- Retrive Data
+        //[ResponseType(typeof(User))]
+        [Route("api/Employees/GetValidateUser/{username}/{password}")]
+        public IHttpActionResult GetValidateUser(string username, string password)
+        {
+            User user = new User();
+            user.UserName = username;
+            user.Password = password;
+            DBModel db = new DBModel();
+            // var result = db.Users.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
+            var result = Membership.ValidateUser(username, password);
+
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

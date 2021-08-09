@@ -138,6 +138,7 @@
     <Compile Include="Controllers\EmployeeTypesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Controllers\LeaveApplyController.cs" />
     <Compile Include="Controllers\LeaveTypeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Models\mvcEmployeeTypeModel.cs" />
     <Compile Include="Models\mvcLeaveApply.cs" />
     <Compile Include="Models\mvcLeaveType.cs" />
+    <Compile Include="Models\mvcUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1977,6 +1979,8 @@
     <Content Include="Views\LeaveApply\AddOrEdit.cshtml" />
     <Content Include="Views\LeaveType\Index.cshtml" />
     <Content Include="Views\LeaveType\AddOrEdit.cshtml" />
+    <Content Include="Views\Identity\LogOn.cshtml" />
+    <Content Include="Views\Identity\RoleCreation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

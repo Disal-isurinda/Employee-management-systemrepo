@@ -58,8 +58,8 @@ namespace MVC.Controllers
 
         public async System.Threading.Tasks.Task<ActionResult> AddOrEdit(int id = 0)
         {
-            //var list = new List<string>() { "User", "Admin" };
-            //ViewBag.list = list;
+            var list = new List<string>() { "User", "Admin" };
+            ViewBag.list3 = list;
 
             var responseto = await GlobalVariables.WebApiClient.GetAsync("Departments").Result.Content.ReadAsAsync<IList<mvcDepartmentModel>>();
 
@@ -84,6 +84,8 @@ namespace MVC.Controllers
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Employees/" + id.ToString()).Result;
                 //var list = new List<string>() { "Account", "HR", "Managing", "Develpment" };
                 //ViewBag.list = list;
+
+               
                 return View(response.Content.ReadAsAsync<mvcEmployeeModel>().Result);
                 // return View();
             }

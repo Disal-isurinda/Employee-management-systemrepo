@@ -33,9 +33,13 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
 
+                @*<a class="nav-link" href="~/Home">*@
+                @*@Html.ActionLink("Employee", "Index", "Employees")*@
                 <a class="nav-link" href="~/Home">
+                    @Html.ActionLink("Home", "Index", "Home")
+
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    @*<span>Dashboard</span>*@
                 </a>
             </li>
 
@@ -44,9 +48,11 @@
 
             <!-- Nav Item - Employees -->
             <li class="nav-item">
-                <a class="nav-link" href="~/Employees">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Employees</span>
+                @Html.ActionLink("Employee", "Index","Employees")
+
+                @*<a class="nav-link" href="~/Employees">*@
+                <i class="fas fa-fw fa-users"></i>
+                @*<span>Employees</span>*@
                 </a>
             </li>
 
@@ -55,9 +61,11 @@
 
             <!-- Nav Item - Employee Types -->
             <li class="nav-item">
-                <a class="nav-link" href="~/EmployeeTypes">
+                @Html.ActionLink("EmployeeTypes", "Index", "EmployeeTypes")
+
+                @*<a class="nav-link" href="~/EmployeeTypes">*@
                     <i class="fas fa-fw fa-user-check"></i>
-                    <span>Employee Types</span>
+                    @*<span>Employee Types</span>*@
                 </a>
             </li>
 
@@ -67,9 +75,11 @@
 
             <!-- Nav Item - Departments -->
             <li class="nav-item">
-                <a class="nav-link" href="~/Departments">
-                    <i class="fas fa-fw fa-building"></i>
-                    <span>Departments</span>
+                @*<a class="nav-link" href="~/Departments">*@
+                @Html.ActionLink("Departments", "Index", "Departments")
+
+                <i class="fas fa-fw fa-building"></i>
+                @*<span>Departments</span>*@
                 </a>
             </li>
 
@@ -78,9 +88,11 @@
 
             <!-- Nav Item - Salaries -->
             <li class="nav-item">
-                <a class="nav-link" href="~/Salaries">
-                    <i class="fas fa-fw fa-money-bill"></i>
-                    <span>Salaries</span>
+                @*<a class="nav-link" href="~/Salaries">*@
+                @Html.ActionLink("Salaries", "Index", "Salaries")
+
+                <i class="fas fa-fw fa-money-bill"></i>
+                @*<span>Salaries</span>*@
                 </a>
             </li>
 
@@ -89,9 +101,11 @@
 
             <!-- Nav Item - Leaves -->
             <li class="nav-item">
-                <a class="nav-link" href="~/LeaveApply">
-                    <i class="fas fa-fw fa-umbrella-beach"></i>
-                    <span>Leaves</span>
+                @*<a class="nav-link" href="~/LeaveApply">*@
+                @Html.ActionLink("Employee", "Index", "Employees")
+
+                <i class="fas fa-fw fa-umbrella-beach"></i>
+                @*<span>Leaves</span>*@
                 </a>
             </li>
 
@@ -100,9 +114,11 @@
 
             <!-- Nav Item - Employee Types -->
             <li class="nav-item">
-                <a class="nav-link" href="~/LeaveType">
+                @*<a class="nav-link" href="~/LeaveType">*@
+                    @Html.ActionLink("Employee", "Index", "Employees")
+
                     <i class="fas fa-fw fa-user-check"></i>
-                    <span>Leave Types</span>
+                    @*<span>Leave Types</span>*@
                 </a>
             </li>
 

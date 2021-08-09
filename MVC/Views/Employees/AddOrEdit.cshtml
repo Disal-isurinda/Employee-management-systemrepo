@@ -71,8 +71,8 @@
                     </tr>
                     <tr>
                         <td>@Html.Label("Role")</td>
-                        <td>@Html.EditorFor(model => model.Role)</td>
-                        @*@Html.DropDownListFor(model => model.Role, new SelectList(ViewBag.list))*@
+                        @*<td>@Html.EditorFor(model => model.Role)</td>*@
+                       <td> @Html.DropDownListFor(model => model.Role, new SelectList(ViewBag.list3))</td>
 
                         <td>@Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })</td>
                     </tr>
