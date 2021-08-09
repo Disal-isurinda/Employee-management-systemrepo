@@ -1,6 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .link {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+            .link:hover {
+                color: darkslategrey;
+                /*text-decoration: none;*/
+            }
+        </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - EMS</title>
@@ -37,6 +49,8 @@
                 @*@Html.ActionLink("Employee", "Index", "Employees")*@
                 <a class="nav-link" href="~/Home">
                     @Html.ActionLink("Home", "Index", "Home")
+                    @*@Html.ActionLink("Home", "Index", "Home", new { @class = "link" })*@
+
 
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     @*<span>Dashboard</span>*@
@@ -90,6 +104,8 @@
             <li class="nav-item">
                 @*<a class="nav-link" href="~/Salaries">*@
                 @Html.ActionLink("Salaries", "Index", "Salaries")
+                @*@Html.ActionLink("Salaries", "Index", "Salaries", new { @class = "link" })*@
+
 
                 <i class="fas fa-fw fa-money-bill"></i>
                 @*<span>Salaries</span>*@
