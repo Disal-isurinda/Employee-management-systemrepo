@@ -13,13 +13,14 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Security;
 using System.Web;
+using static WebApi.Models.MembershipProvider;
 
 namespace WebApi.Controllers
 {
     public class EmployeesController : ApiController
     {
         private DBModel db = new DBModel();
-
+        [CustomAuthFilter]
         // GET: api/Employees
         public IQueryable<Employee> GetEmployees()
         {
@@ -81,7 +82,7 @@ namespace WebApi.Controllers
             db.SaveChanges();
             string username = employee.FirstName + "." + employee.LastName;
             string email = username + "@gmail.com";
-            string password = "ab@1234";
+            string password ="ab@1234";
             MembershipCreateStatus memcresta;
             MembershipUser user = Membership.CreateUser(username, password, email, "question", "answer", true, out memcresta);
             var User = Membership.GetUser(username);
@@ -109,8 +110,8 @@ namespace WebApi.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmpID }, employee);
         }
-      
 
+        [CustomAuthFilter]
         // DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]
         public IHttpActionResult DeleteEmployee(int id)

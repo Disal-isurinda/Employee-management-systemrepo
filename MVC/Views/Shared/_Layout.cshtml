@@ -18,6 +18,20 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            @if (Session["UserName"] == null)
+            {
+                @*<li>@Html.ActionLink("Register", "Register", "Identity")</li>*@
+                <li>@Html.ActionLink("Login", "Logon", "Identity")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Logout", "Logout", "Identity")</li>
+            }
+            @if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                @*<li>@Html.ActionLink("Register", "Register", "Identity")</li>*@
+                <li>@Html.ActionLink("Create Role", "RoleCreation", "Identity")</li>
+            }
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="~/Home">
